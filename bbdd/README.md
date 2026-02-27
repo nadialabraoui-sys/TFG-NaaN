@@ -6,6 +6,7 @@
 - Almacena: tabla afectada, id del registro, operación (`INSERT`, `UPDATE`, `DELETE`), datos anteriores, datos nuevos y fecha.
 - **Importante:** sirve para trazabilidad y control de cambios.
 
+
 ## Usuario
 - Contiene los datos de cada usuario, incluyendo **rol** (cliente/admin).
 - Se utiliza para permisos y asociaciones con otras tablas.
@@ -78,3 +79,137 @@
   - Actualizar totales de carrito y pedido.
   - Mantener auditoría y control de métodos de pago predeterminados.
   - Gestionar soft delete y eliminación automática de productos inactivos.
+
+
+
+ # Resumen de tablas
+
+## AUDITORIA
+- id_auditoria (INT, PK, AUTO_INCREMENT)  
+- tabla_afectada (VARCHAR(100))  
+- id_registro (INT)  
+- operacion (ENUM: INSERT, UPDATE, DELETE)  
+- datos_anteriores (JSON)  
+- datos_nuevos (JSON)  
+- fecha (DATETIME, DEFAULT CURRENT_TIMESTAMP)  
+
+---
+
+## USUARIO
+- id_usuario (INT, PK, AUTO_INCREMENT)  
+- nombre (VARCHAR(100))  
+- email (VARCHAR(150), UNIQUE)  
+- contrasena (VARCHAR(255))  
+- rol (VARCHAR(50))  
+- telefono (VARCHAR(20))  
+- fecha_registro (DATETIME, DEFAULT CURRENT_TIMESTAMP)  
+
+---
+
+## METODO_PAGO
+- id_metodo_pago (INT, PK, AUTO_INCREMENT)  
+- id_usuario (INT, FK → usuario)  
+- tipo (ENUM: paypal, tarjeta, bizum, google_pay)  
+- numero_enmascarado (VARCHAR(50))  
+- es_predeterminado (TINYINT(1), DEFAULT 0)  
+- fecha_expiracion (DATE)  
+
+---
+
+## DIRECCION
+- id_direccion (INT, PK, AUTO_INCREMENT)  
+- id_usuario (INT, FK → usuario)  
+- calle (VARCHAR(150))  
+- numero (VARCHAR(20))  
+- ciudad (VARCHAR(100))  
+- provincia (VARCHAR(100))  
+- codigo_postal (VARCHAR(10))  
+- pais (VARCHAR(100))  
+
+---
+
+## AVATAR_3D
+- id_avatar (INT, PK, AUTO_INCREMENT)  
+- id_usuario (INT, FK → usuario)  
+- pecho (DECIMAL)  
+- cintura (DECIMAL)  
+- cadera (DECIMAL)  
+- estatura (DECIMAL)  
+- peso (DECIMAL)  
+- edad (INT)  
+- talla (VARCHAR(10))  
+
+---
+
+## PRODUCTO
+- id_producto (INT, PK, AUTO_INCREMENT)  
+- nombre (VARCHAR(150))  
+- descripcion (TEXT)  
+- id_categoria (INT, FK → categoria)  
+- activo (TINYINT(1), DEFAULT 1)  
+- eliminado_en (DATETIME, NULL)  
+- precio (DECIMAL(10,2))  
+- stock (INT, DEFAULT 0)  
+- imagen (VARCHAR(255))  
+
+---
+
+## CATEGORIA
+- id_categoria (INT, PK, AUTO_INCREMENT)  
+- nombre (VARCHAR(100))  
+- descripcion (TEXT)  
+
+---
+
+## FAVORITO
+- id_usuario (INT, FK → usuario, PK)  
+- id_producto (INT, FK → producto, PK)  
+
+---
+
+## CARRITO
+- id_carrito (INT, PK, AUTO_INCREMENT)  
+- id_usuario (INT, FK → usuario, UNIQUE)  
+- total (DECIMAL(10,2), DEFAULT 0)  
+
+---
+
+## DETALLE_CARRITO
+- id_detalle (INT, PK, AUTO_INCREMENT)  
+- id_carrito (INT, FK → carrito)  
+- id_producto (INT, FK → producto)  
+- cantidad (INT)  
+- precio_unitario (DECIMAL(10,2))  
+
+---
+
+## PEDIDO
+- id_pedido (INT, PK, AUTO_INCREMENT)  
+- id_usuario (INT, FK → usuario)  
+- id_metodo_pago (INT, FK → metodo_pago)  
+- id_direccion (INT, FK → direccion)  
+- fecha (DATETIME, DEFAULT CURRENT_TIMESTAMP)  
+- gastos_envio (DECIMAL(10,2), DEFAULT 0)  
+- total (DECIMAL(10,2))  
+- codigo_seguimiento (VARCHAR(100))  
+- estado (ENUM: pendiente, pagado, enviado, entregado, cancelado, DEFAULT pendiente)  
+
+---
+
+## DETALLE_PEDIDO
+- id_detalle_pedido (INT, PK, AUTO_INCREMENT)  
+- id_pedido (INT, FK → pedido)  
+- id_producto (INT, FK → producto)  
+- cantidad (INT)  
+- precio_en_el_momento (DECIMAL(10,2))  
+
+---
+
+## HISTORIAL_ESTADO_PEDIDO
+- id_historial (INT, PK, AUTO_INCREMENT)  
+- id_pedido (INT, FK → pedido)  
+- estado (VARCHAR(50))  
+- comentario (TEXT)  
+- fecha (DATETIME, DEFAULT CURRENT_TIMESTAMP)  
+
+---
