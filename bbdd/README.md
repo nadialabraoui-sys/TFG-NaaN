@@ -101,7 +101,8 @@
 - email (VARCHAR(150), UNIQUE)  
 - contrasena (VARCHAR(255))  
 - rol (VARCHAR(50))  
-- telefono (VARCHAR(20))  
+- telefono (VARCHAR(20))
+- fecha_nacimiento (DATE)
 - fecha_registro (DATETIME, DEFAULT CURRENT_TIMESTAMP)  
 
 ---
