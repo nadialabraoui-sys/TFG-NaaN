@@ -2,10 +2,10 @@
 -- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 27-02-2026 a las 15:34:35
--- Versión del servidor: 8.0.44
--- Versión de PHP: 8.2.30
+-- Host: localhost
+-- Generation Time: Feb 28, 2026 at 01:15 PM
+-- Server version: 8.0.45
+-- PHP Version: 8.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,20 +18,20 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `naan_bbdd`
+-- Database: `naan_bbdd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auditoria`
+-- Table structure for table `auditoria`
 --
 
 CREATE TABLE `auditoria` (
   `id_auditoria` int NOT NULL,
-  `tabla_afectada` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tabla_afectada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_registro` int DEFAULT NULL,
-  `operacion` enum('INSERT','UPDATE','DELETE') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `operacion` enum('INSERT','UPDATE','DELETE') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `datos_anteriores` json DEFAULT NULL,
   `datos_nuevos` json DEFAULT NULL,
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP
@@ -40,7 +40,7 @@ CREATE TABLE `auditoria` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `avatar_3d`
+-- Table structure for table `avatar_3d`
 --
 
 CREATE TABLE `avatar_3d` (
@@ -52,13 +52,37 @@ CREATE TABLE `avatar_3d` (
   `estatura` decimal(5,2) DEFAULT NULL,
   `peso` decimal(5,2) DEFAULT NULL,
   `edad` int DEFAULT NULL,
-  `talla` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `talla` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carrito`
+-- Table structure for table `cache`
+--
+
+CREATE TABLE `cache` (
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache_locks`
+--
+
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carrito`
 --
 
 CREATE TABLE `carrito` (
@@ -70,17 +94,17 @@ CREATE TABLE `carrito` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
   `id_categoria` int NOT NULL,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `categoria`
+-- Triggers `categoria`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_audit_categoria_update` AFTER UPDATE ON `categoria` FOR EACH ROW BEGIN
@@ -105,7 +129,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle_carrito`
+-- Table structure for table `detalle_carrito`
 --
 
 CREATE TABLE `detalle_carrito` (
@@ -117,7 +141,7 @@ CREATE TABLE `detalle_carrito` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `detalle_carrito`
+-- Triggers `detalle_carrito`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_carrito_total_delete` AFTER DELETE ON `detalle_carrito` FOR EACH ROW BEGIN
@@ -153,7 +177,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle_pedido`
+-- Table structure for table `detalle_pedido`
 --
 
 CREATE TABLE `detalle_pedido` (
@@ -165,7 +189,7 @@ CREATE TABLE `detalle_pedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `detalle_pedido`
+-- Triggers `detalle_pedido`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_pedido_total_delete` AFTER DELETE ON `detalle_pedido` FOR EACH ROW BEGIN
@@ -207,24 +231,40 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `direccion`
+-- Table structure for table `direccion`
 --
 
 CREATE TABLE `direccion` (
   `id_direccion` int NOT NULL,
   `id_usuario` int NOT NULL,
-  `calle` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `numero` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ciudad` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `provincia` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigo_postal` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pais` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `calle` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `numero` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ciudad` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provincia` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo_postal` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pais` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `favorito`
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorito`
 --
 
 CREATE TABLE `favorito` (
@@ -235,34 +275,69 @@ CREATE TABLE `favorito` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial_estado_pedido`
+-- Table structure for table `historial_estado_pedido`
 --
 
 CREATE TABLE `historial_estado_pedido` (
   `id_historial` int NOT NULL,
   `id_pedido` int NOT NULL,
-  `estado` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `comentario` text COLLATE utf8mb4_unicode_ci,
+  `estado` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comentario` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `metodo_pago`
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint UNSIGNED NOT NULL,
+  `reserved_at` int UNSIGNED DEFAULT NULL,
+  `available_at` int UNSIGNED NOT NULL,
+  `created_at` int UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_batches`
+--
+
+CREATE TABLE `job_batches` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_jobs` int NOT NULL,
+  `pending_jobs` int NOT NULL,
+  `failed_jobs` int NOT NULL,
+  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext COLLATE utf8mb4_unicode_ci,
+  `cancelled_at` int DEFAULT NULL,
+  `created_at` int NOT NULL,
+  `finished_at` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `metodo_pago`
 --
 
 CREATE TABLE `metodo_pago` (
   `id_metodo_pago` int NOT NULL,
   `id_usuario` int NOT NULL,
-  `tipo` enum('paypal','tarjeta','bizum','google_pay') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `numero_enmascarado` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` enum('paypal','tarjeta','bizum','google_pay') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `numero_enmascarado` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `es_predeterminado` tinyint(1) DEFAULT '0',
   `fecha_expiracion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `metodo_pago`
+-- Triggers `metodo_pago`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_metodo_predeterminado_insert` BEFORE INSERT ON `metodo_pago` FOR EACH ROW BEGIN
@@ -288,7 +363,41 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pedido`
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2026_02_23_130126_create_personal_access_tokens_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pedido`
 --
 
 CREATE TABLE `pedido` (
@@ -298,13 +407,13 @@ CREATE TABLE `pedido` (
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP,
   `id_direccion` int NOT NULL,
   `gastos_envio` decimal(10,2) DEFAULT '0.00',
-  `codigo_seguimiento` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `codigo_seguimiento` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` decimal(10,2) NOT NULL,
-  `estado` enum('pendiente','pagado','enviado','entregado','cancelado') COLLATE utf8mb4_unicode_ci DEFAULT 'pendiente'
+  `estado` enum('pendiente','pagado','enviado','entregado','cancelado') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `pedido`
+-- Triggers `pedido`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_audit_pedido_update` AFTER UPDATE ON `pedido` FOR EACH ROW BEGIN
@@ -332,23 +441,42 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producto`
 --
 
 CREATE TABLE `producto` (
   `id_producto` int NOT NULL,
-  `nombre` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `id_categoria` int DEFAULT NULL,
   `activo` tinyint(1) DEFAULT '1',
   `eliminado_en` datetime DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
   `stock` int DEFAULT '0',
-  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Disparadores `producto`
+-- Triggers `producto`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_audit_producto_update` AFTER UPDATE ON `producto` FOR EACH ROW BEGIN
@@ -379,40 +507,69 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
   `id_usuario` int NOT NULL,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contrasena` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rol` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fecha_nacimiento` DATE DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contrasena` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
   `fecha_registro` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `auditoria`
+-- Indexes for table `auditoria`
 --
 ALTER TABLE `auditoria`
   ADD PRIMARY KEY (`id_auditoria`),
   ADD KEY `idx_auditoria_tabla_fecha` (`tabla_afectada`,`fecha`);
 
 --
--- Indices de la tabla `avatar_3d`
+-- Indexes for table `avatar_3d`
 --
 ALTER TABLE `avatar_3d`
   ADD PRIMARY KEY (`id_avatar`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `carrito`
+-- Indexes for table `cache`
+--
+ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_expiration_index` (`expiration`);
+
+--
+-- Indexes for table `cache_locks`
+--
+ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_locks_expiration_index` (`expiration`);
+
+--
+-- Indexes for table `carrito`
 --
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`id_carrito`),
@@ -420,13 +577,13 @@ ALTER TABLE `carrito`
   ADD UNIQUE KEY `id_usuario_2` (`id_usuario`);
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indices de la tabla `detalle_carrito`
+-- Indexes for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
   ADD PRIMARY KEY (`id_detalle`),
@@ -434,7 +591,7 @@ ALTER TABLE `detalle_carrito`
   ADD KEY `id_producto` (`id_producto`);
 
 --
--- Indices de la tabla `detalle_pedido`
+-- Indexes for table `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
   ADD PRIMARY KEY (`id_detalle_pedido`),
@@ -442,35 +599,67 @@ ALTER TABLE `detalle_pedido`
   ADD KEY `id_producto` (`id_producto`);
 
 --
--- Indices de la tabla `direccion`
+-- Indexes for table `direccion`
 --
 ALTER TABLE `direccion`
   ADD PRIMARY KEY (`id_direccion`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `favorito`
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `favorito`
 --
 ALTER TABLE `favorito`
   ADD PRIMARY KEY (`id_usuario`,`id_producto`),
   ADD KEY `id_producto` (`id_producto`);
 
 --
--- Indices de la tabla `historial_estado_pedido`
+-- Indexes for table `historial_estado_pedido`
 --
 ALTER TABLE `historial_estado_pedido`
   ADD PRIMARY KEY (`id_historial`),
   ADD KEY `id_pedido` (`id_pedido`);
 
 --
--- Indices de la tabla `metodo_pago`
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
+-- Indexes for table `job_batches`
+--
+ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `metodo_pago`
 --
 ALTER TABLE `metodo_pago`
   ADD PRIMARY KEY (`id_metodo_pago`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `pedido`
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id_pedido`),
@@ -479,7 +668,16 @@ ALTER TABLE `pedido`
   ADD KEY `id_direccion` (`id_direccion`);
 
 --
--- Indices de la tabla `producto`
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`),
+  ADD KEY `personal_access_tokens_expires_at_index` (`expires_at`);
+
+--
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
@@ -487,145 +685,177 @@ ALTER TABLE `producto`
   ADD KEY `idx_producto_activo_eliminado` (`activo`,`eliminado_en`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `auditoria`
+-- AUTO_INCREMENT for table `auditoria`
 --
 ALTER TABLE `auditoria`
   MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `avatar_3d`
+-- AUTO_INCREMENT for table `avatar_3d`
 --
 ALTER TABLE `avatar_3d`
   MODIFY `id_avatar` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `carrito`
+-- AUTO_INCREMENT for table `carrito`
 --
 ALTER TABLE `carrito`
   MODIFY `id_carrito` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `detalle_carrito`
+-- AUTO_INCREMENT for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
   MODIFY `id_detalle` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `detalle_pedido`
+-- AUTO_INCREMENT for table `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
   MODIFY `id_detalle_pedido` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `direccion`
+-- AUTO_INCREMENT for table `direccion`
 --
 ALTER TABLE `direccion`
   MODIFY `id_direccion` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `historial_estado_pedido`
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `historial_estado_pedido`
 --
 ALTER TABLE `historial_estado_pedido`
   MODIFY `id_historial` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `metodo_pago`
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `metodo_pago`
 --
 ALTER TABLE `metodo_pago`
   MODIFY `id_metodo_pago` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `pedido`
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
   MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
   MODIFY `id_producto` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `avatar_3d`
+-- Constraints for table `avatar_3d`
 --
 ALTER TABLE `avatar_3d`
   ADD CONSTRAINT `avatar_3d_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `carrito`
+-- Constraints for table `carrito`
 --
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `detalle_carrito`
+-- Constraints for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
   ADD CONSTRAINT `detalle_carrito_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE CASCADE,
   ADD CONSTRAINT `detalle_carrito_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
 
 --
--- Filtros para la tabla `detalle_pedido`
+-- Constraints for table `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
   ADD CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE,
   ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
 
 --
--- Filtros para la tabla `direccion`
+-- Constraints for table `direccion`
 --
 ALTER TABLE `direccion`
   ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `favorito`
+-- Constraints for table `favorito`
 --
 ALTER TABLE `favorito`
   ADD CONSTRAINT `favorito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `favorito_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `historial_estado_pedido`
+-- Constraints for table `historial_estado_pedido`
 --
 ALTER TABLE `historial_estado_pedido`
   ADD CONSTRAINT `historial_estado_pedido_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `metodo_pago`
+-- Constraints for table `metodo_pago`
 --
 ALTER TABLE `metodo_pago`
   ADD CONSTRAINT `metodo_pago_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `pedido`
+-- Constraints for table `pedido`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
@@ -633,14 +863,14 @@ ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`id_direccion`) REFERENCES `direccion` (`id_direccion`);
 
 --
--- Filtros para la tabla `producto`
+-- Constraints for table `producto`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE SET NULL;
 
 DELIMITER $$
 --
--- Eventos
+-- Events
 --
 CREATE DEFINER=`root`@`localhost` EVENT `borrar_productos_inactivos` ON SCHEDULE EVERY 1 DAY STARTS '2026-02-27 14:23:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
     DELETE FROM producto
@@ -658,4 +888,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
