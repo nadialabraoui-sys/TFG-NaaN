@@ -28,6 +28,7 @@ class User extends Authenticatable
         'contrasena',
     ];
 
+    // Laravel buscara password pero como la llamamos contrasena hay que crear esta funcion para que la encuentre
     public function getAuthPassword()
     {
         return $this->contrasena;
