@@ -5,19 +5,22 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PedidoController;
 
 Route::post('/registro', [AuthController::class, 'registro']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-// Petición → auth:sanctum → no autenticado → /api/no-autenticado → JSON 401
 Route::get('/no-autenticado', function() {
     return response()->json(['Error' => 'No autenticado'], 401);
 });
 
+// Petición → auth:sanctum → no autenticado → /api/no-autenticado → JSON 401
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('productos', ProductoController::class)->only(['index', 'show']);
     Route::apiResource('categorias', CategoriaController::class)->only(['index', 'show']);
+    Route::apiResource('pedidos', PedidoController::class)->only(['show']);
 });
 
 // Petición → auth:sanctum → admin → CategoriaController
@@ -26,4 +29,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('categorias', CategoriaController::class)->except(['index', 'show']);
     Route::get('productos/all', [ProductoController::class, 'indexAll']);
     Route::patch('productos/{id}/toggle', [ProductoController::class, 'toggleActivo']);
+    Route::apiResource('usuarios', UsuarioController::class)->except(['store']);
+    Route::patch('usuarios/{id}/toggle', [UsuarioController::class, 'toggleAdmin']);
+    Route::apiResource('pedidos', PedidoController::class)->except(['show']);
+    Route::patch('pedidos/{id}/avanzar-estado', [PedidoController::class, 'avanzarEstado']);
+    Route::patch('pedidos/{id}/cancelar', [PedidoController::class, 'cancelar']);
 });
