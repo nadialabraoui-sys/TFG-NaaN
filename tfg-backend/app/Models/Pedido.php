@@ -16,6 +16,7 @@ class Pedido extends Model
         'id_direccion',
         'gastos_envio',
         'codigo_seguimiento',
-        'estado'
+        'estado',
+        'total'
     ];
 }
