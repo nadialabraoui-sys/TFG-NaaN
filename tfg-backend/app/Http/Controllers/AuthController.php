@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Carrito;
+
 
 class AuthController extends Controller
 {
@@ -18,6 +20,10 @@ class AuthController extends Controller
             'rol' => 'cliente',
             'telefono' => $request->telefono,
             'fecha_nacimiento' => $request->fecha_nacimiento
+        ]);
+
+        Carrito::create([
+            'id_usuario' => $usuario->id_usuario
         ]);
 
         $token = $usuario->createToken('token_registro')->plainTextToken;
