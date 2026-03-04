@@ -10,6 +10,8 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\DetallePedidoController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DetalleCarritoController;
+use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\MetodoPagoController;
 
 Route::post('/registro', [AuthController::class, 'registro']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -29,12 +31,17 @@ Route::get('carrito/mi-carrito', [CarritoController::class, 'miCarrito'])->middl
 Route::get('pedidos/mis-pedidos', [PedidoController::class, 'indexOnly'])->middleware('auth:sanctum');
 Route::get('detalle-pedidos/mis-detalles', [DetallePedidoController::class, 'misDetalles'])->middleware('auth:sanctum');
 Route::get('detalle-carrito/mis-detalles-carrito', [DetalleCarritoController::class, 'misDetallesCarrito'])->middleware('auth:sanctum');
+Route::get('direccion/mis-direcciones', [DireccionController::class, 'misDirecciones'])->middleware('auth:sanctum');
+Route::get('metodo-pago/mis-metodos-pago', [MetodoPagoController::class, 'misMetodosPago'])->middleware('auth:sanctum');
+Route::patch('metodo-pago/{id}/toggle', [MetodoPagoController::class, 'togglePredeterminado'])->middleware('auth:sanctum');
 
 // Petición → auth:sanctum → no autenticado → /api/no-autenticado → JSON 401
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('pedidos', PedidoController::class)->only(['show']);
     // Route::apiResource('carrito', CarritoController::class)->only(['store', 'destroy']);
     Route::apiResource('detalle-carrito', DetalleCarritoController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('direccion', DireccionController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('metodo-pago', MetodoPagoController::class)->only(['store', 'update', 'destroy']);
 });
 
 // Petición → auth:sanctum → admin → CategoriaController
@@ -50,4 +57,6 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('detalle-pedidos', DetallePedidoController::class)->except(['update']);
     Route::apiResource('carrito', CarritoController::class)->only(['index', 'show']);
     Route::apiResource('detalle-carrito', DetalleCarritoController::class)->only(['index', 'show']);
+    Route::apiResource('direccion', DireccionController::class)->only(['index', 'show']);
+    Route::apiResource('metodo-pago', MetodoPagoController::class)->only(['index', 'show']);
 });
