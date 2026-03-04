@@ -237,7 +237,7 @@
 ---
 
 ## DETALLE_CARRITO
-- id_detalle (INT, PK, AUTO_INCREMENT)  
+- id_detalle_carrito (INT, PK, AUTO_INCREMENT)  
 - id_carrito (INT, FK → carrito)  
 - id_producto (INT, FK → producto)  
 - cantidad (INT)  
