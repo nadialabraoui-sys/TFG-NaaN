@@ -79,7 +79,13 @@ class PedidoController extends Controller
         return response()->json(['Completado' => "Estado actualizado a $estadoSiguiente"]);
     }
 
-    // Hacer un boton que se deshabilite
+    public function store(Request $request)
+    {
+        $pedido = Pedido::create(array_merge($request->all(), ['total' => 0]));
+        return response()->json($pedido, 201);
+    }
+
+    // Hacer un boton que se deshabilite (Que quede invisible para que no se pueda cancelar en vez de venir a la API)
     public function cancelar($id)
     {
         $pedido = Pedido::find($id);
