@@ -50,26 +50,38 @@ class DetalleCarritoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'cantidad' => 'required|integer|min:1',
-        ]);
-
         $detalleCarrito = DetalleCarrito::find($id);
 
         if (!$detalleCarrito){
             return response()->json(['Error' => 'No encontrado']);
         }
 
+        // Comprobacion de que el detalle del carrito pertenece al usuario y no modifique el de otro
+        $carrito = Carrito::find($detalleCarrito->id_carrito);
+        if ($carrito->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para modificar este detalle del carrito'], 403);
+        }
+
+        $request->validate([
+            'cantidad' => 'required|integer|min:1',
+        ]);
+
         $detalleCarrito->update(['cantidad' => $request->cantidad]);
         return response()->json($detalleCarrito);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $detalleCarrito = DetalleCarrito::find($id);
 
         if (!$detalleCarrito) {
             return response()->json(['Error' => 'El detalle de este carrito no se ha encontrado'], 404);
+        }
+
+        // Comprobacion de que el detalle del carrito pertenece al usuario y no elimine el de otro
+        $carrito = Carrito::find($detalleCarrito->id_carrito);
+        if ($carrito->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para eliminar este detalle del carrito'], 403);
         }
 
         $detalleCarrito->delete();
