@@ -12,6 +12,10 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\DetalleCarritoController;
 use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\MetodoPagoController;
+use App\Http\Controllers\FavoritoController;
+use App\Http\Controllers\Avatar3dController;
+use App\Http\Controllers\AuditoriaController;
+use App\Http\Controllers\HistorialEstadoPedidoController;
 
 Route::post('/registro', [AuthController::class, 'registro']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -34,6 +38,9 @@ Route::get('detalle-carrito/mis-detalles-carrito', [DetalleCarritoController::cl
 Route::get('direccion/mis-direcciones', [DireccionController::class, 'misDirecciones'])->middleware('auth:sanctum');
 Route::get('metodo-pago/mis-metodos-pago', [MetodoPagoController::class, 'misMetodosPago'])->middleware('auth:sanctum');
 Route::patch('metodo-pago/{id}/toggle', [MetodoPagoController::class, 'togglePredeterminado'])->middleware('auth:sanctum');
+Route::get('favorito/mis-favoritos', [FavoritoController::class, 'misFavoritos'])->middleware('auth:sanctum');
+Route::get('favorito/productos-favoritos/{id}', [FavoritoController::class, 'productosFavoritos'])->middleware(['auth:sanctum', 'admin']);
+Route::get('avatar/mi-avatar', [Avatar3dController::class, 'miAvatar'])->middleware('auth:sanctum');
 
 // Petición → auth:sanctum → no autenticado → /api/no-autenticado → JSON 401
 Route::middleware('auth:sanctum')->group(function () {
@@ -42,6 +49,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('detalle-carrito', DetalleCarritoController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('direccion', DireccionController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('metodo-pago', MetodoPagoController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('favorito', FavoritoController::class)->only(['store', 'destroy']);
+    Route::apiResource('avatar', Avatar3dController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('historial-estado-pedido', HistorialEstadoPedidoController::class)->only(['update']);
 });
 
 // Petición → auth:sanctum → admin → CategoriaController
@@ -59,4 +69,8 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('detalle-carrito', DetalleCarritoController::class)->only(['index', 'show']);
     Route::apiResource('direccion', DireccionController::class)->only(['index', 'show']);
     Route::apiResource('metodo-pago', MetodoPagoController::class)->only(['index', 'show']);
+    Route::apiResource('favorito', FavoritoController::class)->only(['index']);
+    Route::apiResource('avatar', Avatar3dController::class)->only(['index', 'show']);
+    Route::apiResource('auditoria', AuditoriaController::class)->only(['index', 'show']);
+    Route::apiResource('historial-estado-pedido', HistorialEstadoPedidoController::class)->only(['index', 'show']);
 });
