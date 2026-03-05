@@ -34,11 +34,26 @@ class MetodoPagoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+            'tipo' => 'required|in:paypal',
+            'numero_enmascarado' => 'required|string|max:255',
+            'es_predeterminado' => 'boolean',
+            'fecha_expiracion' => 'required|date',
+        ]);
+
         $metodoPago = MetodoPago::create($request->all());
         return response()->json($metodoPago, 201);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'tipo' => 'sometimes|in:paypal',
+            'numero_enmascarado' => 'sometimes|string|max:255',
+            'es_predeterminado' => 'sometimes|boolean',
+            'fecha_expiracion' => 'sometimes|date',
+        ]);
 
         $metodoPago = MetodoPago::find($id);
 

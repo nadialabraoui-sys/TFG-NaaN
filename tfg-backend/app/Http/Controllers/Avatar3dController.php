@@ -38,12 +38,33 @@ class Avatar3dController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+            'pecho' => 'required|numeric|min:0',
+            'cintura' => 'required|numeric|min:0',
+            'cadera' => 'required|numeric|min:0',
+            'estatura' => 'required|numeric|min:0',
+            'peso' => 'required|numeric|min:0',
+            'edad' => 'required|integer|min:0',
+            'talla' => 'required|in:XS,S,M,L,XL,XXL',
+        ]);
+
         // Pasa el JSON a array de  PHP el $request->all()
         $avatar = Avatar3d::create($request->all());
         return response()->json($avatar, 201);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'pecho' => 'sometimes|numeric|min:0',
+            'cintura' => 'sometimes|numeric|min:0',
+            'cadera' => 'sometimes|numeric|min:0',
+            'estatura' => 'sometimes|numeric|min:0',
+            'peso' => 'sometimes|numeric|min:0',
+            'edad' => 'sometimes|integer|min:0',
+            'talla' => 'sometimes|in:XS,S,M,L,XL,XXL',
+        ]);
 
         $avatar = Avatar3d::find($id);
 

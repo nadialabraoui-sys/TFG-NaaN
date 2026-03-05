@@ -27,6 +27,13 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'sometimes|string|max:255',
+            'email' => 'sometimes|email|unique:usuario,email',
+            'telefono' => 'sometimes|nullable|string|max:20',
+            'fecha_nacimiento' => 'sometimes|nullable|date',
+        ]);
+
         $usuario = User::find($id);
 
         if (!$usuario) {

@@ -34,12 +34,31 @@ class DireccionController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+            'calle' => 'required|string|max:255',
+            'numero' => 'required|string|max:20',
+            'ciudad' => 'required|string|max:255',
+            'provincia' => 'required|string|max:255',
+            'codigo_postal' => 'required|string|max:10',
+            'pais' => 'required|string|max:255',
+        ]);
+
         $direccion = Direccion::create($request->all());
         return response()->json($direccion, 201);
     }
 
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'calle' => 'sometimes|string|max:255',
+            'numero' => 'sometimes|string|max:20',
+            'ciudad' => 'sometimes|string|max:255',
+            'provincia' => 'sometimes|string|max:255',
+            'codigo_postal' => 'sometimes|string|max:10',
+            'pais' => 'sometimes|string|max:255',
+        ]);
+        
         $direccion = Direccion::find($id);
 
         if (!$direccion) {

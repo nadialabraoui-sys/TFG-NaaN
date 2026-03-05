@@ -37,12 +37,23 @@ class DetalleCarritoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_carrito' => 'required|exists:carrito,id_carrito',
+            'id_producto' => 'required|exists:producto,id_producto',
+            'cantidad' => 'required|integer|min:1',
+            'precio_unitario' => 'required|numeric|min:0',
+        ]);
+
         $detalleCarrito = DetalleCarrito::create($request->all());
         return response()->json($detalleCarrito, 201);
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'cantidad' => 'required|integer|min:1',
+        ]);
+
         $detalleCarrito = DetalleCarrito::find($id);
 
         if (!$detalleCarrito){

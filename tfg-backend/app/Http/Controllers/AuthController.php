@@ -13,6 +13,14 @@ class AuthController extends Controller
 {
     public function registro(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuario,email',
+            'contrasena' => 'required|string|min:6',
+            'telefono' => 'nullable|string|max:20',
+            'fecha_nacimiento' => 'nullable|date',
+        ]);
+
         $usuario = User::create([
             'nombre' => $request->nombre,
             'email' => $request->email,
@@ -36,6 +44,12 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
+        $request->validate([
+            'email' => 'required|email',
+            'contrasena' => 'required|string',
+        ]);
+
         $usuario = User::where('email', $request->email)->first();
 
         if (!$usuario || !Hash::check($request->contrasena, $usuario->contrasena)) {

@@ -81,6 +81,15 @@ class PedidoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+            'id_metodo_pago' => 'required|exists:metodo_pago,id_metodo_pago',
+            'id_direccion' => 'required|exists:direccion,id_direccion',
+            'gastos_envio' => 'required|numeric|min:0',
+            'codigo_seguimiento' => 'nullable|string|max:255',
+            'estado' => 'required|in:pendiente,pagado,enviado,entregado,cancelado',
+        ]);
+
         $pedido = Pedido::create(array_merge($request->all(), ['total' => 0]));
         return response()->json($pedido, 201);
     }

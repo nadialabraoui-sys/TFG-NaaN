@@ -39,6 +39,13 @@ class DetallePedidoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_pedido' => 'required|exists:pedido,id_pedido',
+            'id_producto' => 'required|exists:producto,id_producto',
+            'cantidad' => 'required|integer|min:1',
+            'precio_en_el_momento' => 'required|numeric|min:0',
+        ]);
+
         $detallePedido = DetallePedido::create($request->all());
         return response()->json($detallePedido, 201);
     }

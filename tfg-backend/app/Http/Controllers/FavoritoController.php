@@ -30,6 +30,11 @@ class FavoritoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+            'id_producto' => 'required|exists:producto,id_producto',
+        ]);
+        
         $favorito = Favorito::create($request->all());
         return response()->json($favorito, 201);
     }

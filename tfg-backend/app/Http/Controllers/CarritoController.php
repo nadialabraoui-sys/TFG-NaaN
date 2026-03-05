@@ -39,6 +39,10 @@ class CarritoController extends Controller
     // El carrito se creara una vez se registre el usuario, pero por si acaso
     public function store(Request $request)
     {
+        $request->validate([
+            'id_usuario' => 'required|exists:usuario,id_usuario',
+        ]);
+
         // Pasa el JSON a array de  PHP el $request->all()
         $carrito = Carrito::create($request->all());
         return response()->json($carrito, 201);

@@ -32,12 +32,32 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'precio' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'id_categoria' => 'required|exists:categoria,id_categoria',
+            'imagen' => 'nullable|string',
+            'activo' => 'boolean',
+        ]);
+
         $producto = Producto::create($request->all());
         return response()->json($producto, 201);
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'sometimes|string|max:255',
+            'descripcion' => 'sometimes|nullable|string',
+            'precio' => 'sometimes|numeric|min:0',
+            'stock' => 'sometimes|integer|min:0',
+            'id_categoria' => 'sometimes|exists:categoria,id_categoria',
+            'imagen' => 'sometimes|nullable|string',
+            'activo' => 'sometimes|boolean',
+        ]);
+
         $producto = Producto::find($id);
 
         if (!$producto) {

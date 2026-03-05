@@ -23,12 +23,22 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+        ]);
+
         $categoria = Categoria::create($request->all());
         return response()->json($categoria, 201);
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'sometimes|string|max:255',
+            'descripcion' => 'sometimes|nullable|string',
+        ]);
+
         $categoria = Categoria::find($id);
         if (!$categoria) {
             return response()->json(['Error' => 'Categoría no encontrada'], 404);
