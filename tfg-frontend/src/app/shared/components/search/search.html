@@ -1,23 +1,23 @@
 <!-- buscador -->
-<search>
-  <div class="flex justify-start h-10">
+<search class="h-8 flex m-8 justify-end">
 
+  <div class="">
     <input type="search" placeholder="Buscar..." aria-label="Buscador" autocomplete="off"
            (keyup)="buscar()"
            [(ngModel)]="query"
+           class="rounded-lg px-3 border-naan-red"
           >
 
-    <button type="button" aria-label="Abrir filtros de búsqueda" (click)="toggleFiltros()" class="h-auto">
-      <img src="icons/filter.svg" alt="" aria-hidden="true" >
+    <button type="button" aria-label="Abrir filtros de búsqueda" (click)="toggleFiltros()">
+      <img src="icons/filter.svg" class="h-6" alt="" aria-hidden="true" >
     </button>
-
   </div>
 </search>
 
 @if(mostrarFiltros) {
 
   <!-- filtros -->
-  <aside class="mt-4 p-4 bg-gray-200 rounded-2xl shadow-md max-w-xs"
+  <aside class=""
          aria-label="Filtros de búsqueda">
 
     <!-- Precio -->

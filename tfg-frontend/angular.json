@@ -59,6 +59,12 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "host": "0.0.0.0",
+            "port": 4200,
+            "allowedHosts": ["192.168.1.38"],
+            "hmr": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "naan:build:production"
