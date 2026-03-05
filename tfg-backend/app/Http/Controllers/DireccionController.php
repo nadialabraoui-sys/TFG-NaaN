@@ -50,6 +50,18 @@ class DireccionController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $direccion = Direccion::find($id);
+
+        if (!$direccion) {
+            return response()->json(['Error' => 'La dirección no se ha encontrado'], 404);
+        }
+
+        // Comprobacion de que la dirección pertenece al usuario y no modifique la de otro
+        if ($direccion->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para modificar esta dirección'], 403);
+        }
+
         $request->validate([
             'calle' => 'sometimes|string|max:255',
             'numero' => 'sometimes|string|max:20',
@@ -58,23 +70,22 @@ class DireccionController extends Controller
             'codigo_postal' => 'sometimes|string|max:10',
             'pais' => 'sometimes|string|max:255',
         ]);
-        
+
+        $direccion->update($request->all());
+        return response()->json($direccion, 201);
+    }
+
+    public function destroy(Request $request, $id)
+    {
         $direccion = Direccion::find($id);
 
         if (!$direccion) {
             return response()->json(['Error' => 'La dirección no se ha encontrado'], 404);
         }
 
-        $direccion->update($request->all());
-        return response()->json($direccion, 201);
-    }
-
-    public function destroy($id)
-    {
-        $direccion = Direccion::find($id);
-
-        if (!$direccion) {
-            return response()->json(['Error' => 'La dirección no se ha encontrado'], 404);
+        // Comprobacion de que la dirección pertenece al usuario y no elimine la de otro
+        if ($direccion->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para eliminar esta dirección'], 403);
         }
 
         $direccion->delete();
