@@ -56,6 +56,17 @@ class Avatar3dController extends Controller
 
     public function update(Request $request, $id)
     {
+        $avatar = Avatar3d::find($id);
+
+        if (!$avatar) {
+            return response()->json(['Error' => 'El avatar no se ha encontrado'], 404);
+        }
+
+        // Comprobacion de que el avatar pertenece al usuario y no modifique el de otro
+        if ($avatar->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para modificar este avatar'], 403);
+        }
+
         $request->validate([
             'pecho' => 'sometimes|numeric|min:0',
             'cintura' => 'sometimes|numeric|min:0',
@@ -66,22 +77,21 @@ class Avatar3dController extends Controller
             'talla' => 'sometimes|in:XS,S,M,L,XL,XXL',
         ]);
 
+        $avatar->update($request->all());
+        return response()->json($avatar, 201);
+    }
+
+    public function destroy(Request $request, $id)
+    {
         $avatar = Avatar3d::find($id);
 
         if (!$avatar) {
             return response()->json(['Error' => 'El avatar no se ha encontrado'], 404);
         }
 
-        $avatar->update($request->all());
-        return response()->json($avatar, 201);
-    }
-
-    public function destroy($id)
-    {
-        $avatar = Avatar3d::find($id);
-
-        if (!$avatar) {
-            return response()->json(['Error' => 'El avatar no se ha encontrado'], 404);
+        // Comprobacion de que el avatar pertenece al usuario y no elimine el de otro
+        if ($avatar->id_usuario !== $request->user()->id_usuario) {
+            return response()->json(['Error' => 'No tienes permisos para eliminar este avatar'], 403);
         }
 
         $avatar->delete();
