@@ -1,72 +1,81 @@
 <!-- buscador -->
-<search class="h-8 flex m-8 justify-end">
 
-  <div class="">
+<search class="h-8 flex m-8 justify-end">
+<div class="relative">
+  <div class="flex items-center gap-2">
+
     <input type="search" placeholder="Buscar..." aria-label="Buscador" autocomplete="off"
            (keyup)="buscar()"
            [(ngModel)]="query"
-           class="rounded-lg px-3 border-naan-red"
+           class=" border-2 rounded-lg px-3 w-40 border-black focus:border-naan-red"
           >
 
-    <button type="button" aria-label="Abrir filtros de búsqueda" (click)="toggleFiltros()">
-      <img src="icons/filter.svg" class="h-6" alt="" aria-hidden="true" >
+    <button type="button"
+            aria-label="Abrir filtros de búsqueda"
+            [attr.aria-expanded]="mostrarFiltros"
+            aria-controls="panel-filtros"
+            (click)="toggleFiltros()">
+      <img src="icons/filter.svg" class="h-6" alt="" aria-hidden="true">
     </button>
   </div>
-</search>
+
 
 @if(mostrarFiltros) {
 
   <!-- filtros -->
-  <aside class=""
-         aria-label="Filtros de búsqueda">
+  <aside class="h-[85vh] w-fit bg-naan-grey border-2 border-black rounded-lg p-4 overflow-y-auto"
+         aria-label="Filtros de búsqueda"
+         [attr.aria-expanded]="mostrarFiltros"
+         role="region">
 
     <!-- Precio -->
-    <fieldset class="mb-4">
+    <fieldset class="px-2">
       <legend class="text-lg font-semibold text-gray-800 mb-2">Precio</legend>
       <div class="flex gap-2">
         <label class="flex-1">
           <span class="sr-only">Mínimo</span>
           <input type="number" placeholder="Mín"
-                 class="w-full px-2 py-1 rounded border border-gray-300
-                        focus:outline-none focus:ring-2 focus:ring-red-800">
+                 class="w-full px-2 py-1 rounded border-2 border-black
+                        focus:outline-none focus:ring-2 focus:ring-naan-red">
         </label>
         <label class="flex-1">
           <span class="sr-only">Máximo</span>
           <input type="number" placeholder="Máx"
-                 class="w-full px-2 py-1 rounded border border-gray-300
-                        focus:outline-none focus:ring-2 focus:ring-red-800">
+                 class="w-full px-2 py-1 rounded border-2 border-black
+                        focus:outline-none focus:ring-2 focus:ring-naan-red">
         </label>
       </div>
     </fieldset>
 
-    <hr class="border-gray-400 mb-4">
+
+    <hr class="border-black my-4 mx-4">
 
     <!-- Categorías -->
-    <fieldset class="mb-4">
-      <legend class="text-lg font-semibold text-gray-800 mb-2">Categorías</legend>
+    <fieldset class="px-2">
+      <legend class="text-lg font-semibold text-black mb-2">Categorías</legend>
       <div class="grid grid-cols-2 gap-x-4 gap-y-1">
         @for(cat of categorias; track cat) {
           <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
             <input type="checkbox" [value]="cat"
-                   class="w-4 h-4 rounded border-gray-400
-                          text-red-800 focus:ring-red-800">
+                   class="w-4 h-4 rounded border-2 border-black
+                          accent-naan-red focus:ring-naan-red">
             <span>{{ cat }}</span>
           </label>
         }
       </div>
     </fieldset>
 
-    <hr class="border-gray-400 mb-4">
+    <hr class="border-black my-4 mx-4">
 
     <!-- Talla -->
-    <fieldset>
+    <fieldset class="px-2">
       <legend class="text-lg font-semibold text-gray-800 mb-2">Talla</legend>
       <div class="grid grid-cols-2 gap-x-4 gap-y-1">
         @for(talla of tallas; track talla) {
           <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
             <input type="checkbox" [value]="talla"
-                   class="w-4 h-4 rounded border-gray-400
-                          text-red-800 focus:ring-red-800">
+                   class="w-4 h-4 rounded border-2 border-black
+                          accent-naan-red focus:ring-naan-red">
             <span>{{ talla }}</span>
           </label>
         }
@@ -75,3 +84,5 @@
 
   </aside>
 }
+</div>
+</search>
