@@ -10,7 +10,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class Search {
 
+
   query: string = "";
+  mostrarBuscador: boolean = true;
   mostrarFiltros: boolean = false;
   tallas: string[] = ['XS', 'S', 'M', 'L', 'XL'];
   categorias: string[] = [];

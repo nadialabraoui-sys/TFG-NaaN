@@ -3,7 +3,7 @@
 <search class="h-8 flex m-8 justify-end">
 <div class="relative">
   <div class="flex items-center gap-2">
-
+@if(mostrarBuscador) {
     <input type="search" placeholder="Buscar..." aria-label="Buscador" autocomplete="off"
            (keyup)="buscar()"
            [(ngModel)]="query"
@@ -17,6 +17,7 @@
             (click)="toggleFiltros()">
       <img src="icons/filter.svg" class="h-6" alt="" aria-hidden="true">
     </button>
+}
   </div>
 
 
