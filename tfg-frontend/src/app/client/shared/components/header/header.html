@@ -1,0 +1,215 @@
+<!-- buscador -->
+<search class="flex flex-wrap justify-end items-center gap-2
+               px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4">
+
+  <div class="relative w-full sm:w-auto">
+    <div class="flex flex-wrap items-center justify-end gap-2 sm:gap-4">
+
+      <!-- Buscador y filtros (condicional) -->
+      @if(mostrarBuscador) {
+        <div class="flex items-center gap-2 w-full sm:w-auto sm:mr-4 md:mr-8">
+          <label for="buscador" class="sr-only">Buscar productos</label>
+          <input type="search"
+                 id="buscador"
+                 placeholder="Buscar..."
+                 aria-label="Buscar productos en la tienda"
+                 autocomplete="off"
+                 (keyup)="buscar()"
+                 [(ngModel)]="query"
+                 class="flex-1 sm:flex-none border-2 rounded-lg px-3 py-1.5
+                        w-full sm:w-40 md:w-48 lg:w-56
+                        border-black focus:border-naan-red focus:outline-none
+                        text-sm sm:text-base">
+
+          <button type="button"
+                  aria-label="Abrir filtros de búsqueda"
+                  [attr.aria-expanded]="mostrarFiltros"
+                  aria-controls="panel-filtros"
+                  (click)="toggleFiltros()"
+                  class="p-1.5 hover:bg-naan-grey rounded-lg transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-naan-red">
+            <img src="icons/filter.svg"
+                 class="h-5 w-5 sm:h-6 sm:w-6"
+                 alt=""
+                 aria-hidden="true">
+          </button>
+        </div>
+      }
+
+      <!-- Navegación secundaria -->
+      <nav aria-label="Opciones de usuario"
+           class="flex items-center gap-2 sm:gap-4 text-sm sm:text-base">
+
+        <!-- Selector país/divisa -->
+        <div class="relative">
+          <label for="selector-divisa" class="sr-only">Seleccionar país y divisa</label>
+          <select id="selector-divisa"
+                  aria-label="Seleccionar país y divisa"
+                  class="appearance-none bg-transparent cursor-pointer pr-5
+                         focus:outline-none focus:ring-2 focus:ring-naan-red rounded
+                          transition-colors
+                         text-sm sm:text-base">
+            @for(divisa of divisas; track divisa) {
+              <option [value]="divisa.code">{{divisa.value}}</option>
+            }
+          </select>
+          <span class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-xs"
+                aria-hidden="true">▼</span>
+        </div>
+
+        <span class="text-black" aria-hidden="true">|</span>
+
+        <!-- Link cesta -->
+        <a routerLink="/cesta"
+           class="hover:text-naan-red transition-colors
+                  focus:outline-none focus:ring-2 focus:ring-naan-red rounded px-1"
+           aria-label="Ir a la cesta de la compra">
+          <span class="hidden sm:inline">CESTA</span>
+          <span class="sm:hidden">🛒</span>
+        </a>
+
+        <span class="text-black" aria-hidden="true">|</span>
+
+        <!-- Login / Usuario -->
+        @if(sesionIniciada) {
+          <a routerLink="/perfil"
+             class="hover:text-naan-red transition-colors
+                    focus:outline-none focus:ring-2 focus:ring-naan-red rounded px-1"
+             [attr.aria-label]="'Ir al perfil de ' + nombreUsuario">
+            <span class="hidden md:inline">Bienvenido, </span>
+            <span class="font-semibold">{{ nombreUsuario.toUpperCase() }}</span>
+          </a>
+        } @else {
+          <a routerLink="/login"
+             class="hover:text-naan-red transition-colors
+                    focus:outline-none focus:ring-2 focus:ring-naan-red rounded px-1"
+             aria-label="Iniciar sesión">
+            LOGIN
+          </a>
+        }
+      </nav>
+    </div>
+
+    <!-- Panel de filtros -->
+    @if(mostrarFiltros) {
+      <aside id="panel-filtros"
+             class="absolute top-full right-0 mt-2 z-50
+                    h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh]
+                    w-[90vw] sm:w-80 md:w-96
+                    bg-naan-grey border-2 border-black rounded-lg p-3 sm:p-4
+                    overflow-y-auto"
+             aria-label="Panel de filtros de búsqueda"
+             [attr.aria-hidden]="!mostrarFiltros"
+             role="region">
+
+        <!-- Botón cerrar (móvil) -->
+        <div class="flex justify-between items-center mb-4 sm:hidden">
+          <span class="font-semibold text-lg">Filtros</span>
+          <button (click)="toggleFiltros()"
+                  aria-label="Cerrar filtros"
+                  class="p-2 hover:bg-white rounded-lg transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-naan-red">
+            ✕
+          </button>
+        </div>
+
+        <!-- Precio -->
+        <fieldset class="px-2">
+          <legend class="text-base sm:text-lg font-semibold text-gray-800 mb-2">
+            Precio
+          </legend>
+          <div class="flex gap-2">
+            <label class="flex-1">
+              <span class="sr-only">Precio mínimo en euros</span>
+              <input type="number"
+                     placeholder="Mín"
+                     aria-label="Precio mínimo"
+                     min="0"
+                     class="w-full px-2 py-1.5 sm:py-1 rounded border-2 border-black
+                            text-sm sm:text-base
+                            focus:outline-none focus:ring-2 focus:ring-naan-red">
+            </label>
+            <label class="flex-1">
+              <span class="sr-only">Precio máximo en euros</span>
+              <input type="number"
+                     placeholder="Máx"
+                     aria-label="Precio máximo"
+                     min="0"
+                     class="w-full px-2 py-1.5 sm:py-1 rounded border-2 border-black
+                            text-sm sm:text-base
+                            focus:outline-none focus:ring-2 focus:ring-naan-red">
+            </label>
+          </div>
+        </fieldset>
+
+        <hr class="border-black my-3 sm:my-4 mx-2 sm:mx-4" aria-hidden="true">
+
+        <!-- Categorías -->
+        <fieldset class="px-2">
+          <legend class="text-base sm:text-lg font-semibold text-black mb-2">
+            Categorías
+          </legend>
+          <div class="grid grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-1.5 sm:gap-y-1"
+               role="group"
+               aria-label="Filtrar por categoría">
+            @for(cat of categorias; track cat) {
+              <label class="flex items-center gap-2 text-xs sm:text-sm text-gray-700
+                            cursor-pointer hover:text-black transition-colors">
+                <input type="checkbox"
+                       [value]="cat"
+                       [attr.aria-label]="'Filtrar por categoría ' + cat"
+                       class="w-4 h-4 rounded border-2 border-black
+                              accent-naan-red focus:ring-2 focus:ring-naan-red">
+                <span>{{ cat }}</span>
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <hr class="border-black my-3 sm:my-4 mx-2 sm:mx-4" aria-hidden="true">
+
+        <!-- Talla -->
+        <fieldset class="px-2">
+          <legend class="text-base sm:text-lg font-semibold text-gray-800 mb-2">
+            Talla
+          </legend>
+          <div class="grid grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-1.5 sm:gap-y-1"
+               role="group"
+               aria-label="Filtrar por talla">
+            @for(talla of tallas; track talla) {
+              <label class="flex items-center gap-2 text-xs sm:text-sm text-gray-700
+                            cursor-pointer hover:text-black transition-colors">
+                <input type="checkbox"
+                       [value]="talla"
+                       [attr.aria-label]="'Filtrar por talla ' + talla"
+                       class="w-4 h-4 rounded border-2 border-black
+                              accent-naan-red focus:ring-2 focus:ring-naan-red">
+                <span>{{ talla }}</span>
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <!-- Botón aplicar filtros (móvil) -->
+        <div class="mt-4 sm:hidden">
+          <button (click)="toggleFiltros()"
+                  class="w-full py-2 bg-naan-red text-white font-semibold rounded-lg
+                         hover:bg-naan-red-dark transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-black">
+            Aplicar filtros
+          </button>
+        </div>
+
+      </aside>
+    }
+
+    <!-- Overlay para cerrar filtros en móvil -->
+    @if(mostrarFiltros) {
+      <div class="fixed inset-0 bg-black/30 z-40 sm:hidden"
+           (click)="toggleFiltros()"
+           aria-hidden="true">
+      </div>
+    }
+
+  </div>
+</search>
