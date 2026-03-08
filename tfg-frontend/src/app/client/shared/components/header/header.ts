@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-header',
   imports: [CommonModule, FormsModule],
   standalone: true,
-  templateUrl: './search.html',
+  templateUrl: './header.html',
 })
-export class Search {
+export class Header {
 
 
   query: string = "";

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import  { Search } from '../../shared/components/search/search'
+import  { Header } from '../../shared/components/header/header'
+import  { Navbar } from '../../shared/components/navbar/navbar'
+
 @Component({
   selector: 'app-landing',
-  imports: [Search],
+  imports: [Header, Navbar],
   templateUrl: './landing.html',
 
 })
