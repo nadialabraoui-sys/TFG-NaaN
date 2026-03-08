@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2026 at 01:15 PM
+-- Generation Time: Mar 08, 2026 at 11:53 AM
 -- Server version: 8.0.45
 -- PHP Version: 8.2.30
 
@@ -37,6 +37,28 @@ CREATE TABLE `auditoria` (
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `auditoria`
+--
+
+INSERT INTO `auditoria` (`id_auditoria`, `tabla_afectada`, `id_registro`, `operacion`, `datos_anteriores`, `datos_nuevos`, `fecha`) VALUES
+(1, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-02-28 16:40:57'),
+(2, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-04 15:40:02'),
+(3, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-04 15:40:23'),
+(4, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-04 15:40:35'),
+(5, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-04 15:40:36'),
+(6, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-04 15:40:41'),
+(7, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-04 15:41:27'),
+(8, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-04 15:41:58'),
+(9, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Ropa\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Guayaberas Editado\", \"descripcion\": \"Ropa de todo tipo\"}', '2026-03-04 15:47:15'),
+(10, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Guayaberas Editado\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Ropa\", \"descripcion\": \"Ropa de todo tipo\"}', '2026-03-04 15:47:30'),
+(11, 'Categoria', 2, 'UPDATE', '{\"nombre\": \"Guayaberas\", \"descripcion\": \"Ropa presidencial de Mexico\"}', '{\"nombre\": \"Guayabera Editado\", \"descripcion\": \"Ropa presidencial de Mexico\"}', '2026-03-04 15:47:39'),
+(12, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"pagado\"}', '2026-03-04 16:07:28'),
+(13, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pagado\"}', '{\"total\": 0.00, \"estado\": \"enviado\"}', '2026-03-04 16:07:35'),
+(14, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"enviado\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-04 16:07:47'),
+(15, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '{\"total\": 39.98, \"estado\": \"cancelado\"}', '2026-03-04 16:38:18'),
+(16, 'Pedido', 1, 'UPDATE', '{\"total\": 39.98, \"estado\": \"cancelado\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-04 16:38:45');
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +76,13 @@ CREATE TABLE `avatar_3d` (
   `edad` int DEFAULT NULL,
   `talla` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `avatar_3d`
+--
+
+INSERT INTO `avatar_3d` (`id_avatar`, `id_usuario`, `pecho`, `cintura`, `cadera`, `estatura`, `peso`, `edad`, `talla`) VALUES
+(2, 4, 1.00, 1.00, 1.00, 1.00, 1.00, 12, 'L');
 
 -- --------------------------------------------------------
 
@@ -91,6 +120,15 @@ CREATE TABLE `carrito` (
   `total` decimal(10,2) DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `carrito`
+--
+
+INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `total`) VALUES
+(1, 4, 39.98),
+(4, 6, 0.00),
+(5, 7, 0.00);
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +140,14 @@ CREATE TABLE `categoria` (
   `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
+(1, 'Ropa', 'Ropa de todo tipo'),
+(2, 'Guayabera Editado', 'Ropa presidencial de Mexico');
 
 --
 -- Triggers `categoria`
@@ -133,12 +179,19 @@ DELIMITER ;
 --
 
 CREATE TABLE `detalle_carrito` (
-  `id_detalle` int NOT NULL,
+  `id_detalle_carrito` int NOT NULL,
   `id_carrito` int NOT NULL,
   `id_producto` int NOT NULL,
   `cantidad` int NOT NULL,
   `precio_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detalle_carrito`
+--
+
+INSERT INTO `detalle_carrito` (`id_detalle_carrito`, `id_carrito`, `id_producto`, `cantidad`, `precio_unitario`) VALUES
+(2, 1, 1, 2, 19.99);
 
 --
 -- Triggers `detalle_carrito`
@@ -245,6 +298,13 @@ CREATE TABLE `direccion` (
   `pais` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `direccion`
+--
+
+INSERT INTO `direccion` (`id_direccion`, `id_usuario`, `calle`, `numero`, `ciudad`, `provincia`, `codigo_postal`, `pais`) VALUES
+(1, 4, 'Calle 1', '1', 'Logroño', 'La Rioja', '26003', 'España');
+
 -- --------------------------------------------------------
 
 --
@@ -272,6 +332,13 @@ CREATE TABLE `favorito` (
   `id_producto` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `favorito`
+--
+
+INSERT INTO `favorito` (`id_usuario`, `id_producto`) VALUES
+(4, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -285,6 +352,15 @@ CREATE TABLE `historial_estado_pedido` (
   `comentario` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `historial_estado_pedido`
+--
+
+INSERT INTO `historial_estado_pedido` (`id_historial`, `id_pedido`, `estado`, `comentario`, `fecha`) VALUES
+(1, 1, 'pagado', NULL, '2026-03-04 16:07:28'),
+(2, 1, 'enviado', NULL, '2026-03-04 16:07:35'),
+(3, 1, 'cancelado', 'Muy mal servicio, paquete llegó tarde', '2026-03-04 16:07:47');
 
 -- --------------------------------------------------------
 
@@ -337,28 +413,12 @@ CREATE TABLE `metodo_pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Triggers `metodo_pago`
+-- Dumping data for table `metodo_pago`
 --
-DELIMITER $$
-CREATE TRIGGER `trg_metodo_predeterminado_insert` BEFORE INSERT ON `metodo_pago` FOR EACH ROW BEGIN
-    IF NEW.es_predeterminado = TRUE THEN
-        UPDATE metodo_pago
-        SET es_predeterminado = FALSE
-        WHERE id_usuario = NEW.id_usuario;
-    END IF;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `trg_metodo_predeterminado_update` BEFORE UPDATE ON `metodo_pago` FOR EACH ROW BEGIN
-    IF NEW.es_predeterminado = TRUE THEN
-        UPDATE metodo_pago
-        SET es_predeterminado = FALSE
-        WHERE id_usuario = NEW.id_usuario AND id_metodo_pago <> NEW.id_metodo_pago;
-    END IF;
-END
-$$
-DELIMITER ;
+
+INSERT INTO `metodo_pago` (`id_metodo_pago`, `id_usuario`, `tipo`, `numero_enmascarado`, `es_predeterminado`, `fecha_expiracion`) VALUES
+(1, 4, 'paypal', '2', 0, '2036-03-01'),
+(3, 4, 'paypal', '1234', 0, '2027-12-12');
 
 -- --------------------------------------------------------
 
@@ -413,6 +473,13 @@ CREATE TABLE `pedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `pedido`
+--
+
+INSERT INTO `pedido` (`id_pedido`, `id_usuario`, `id_metodo_pago`, `fecha`, `id_direccion`, `gastos_envio`, `codigo_seguimiento`, `total`, `estado`) VALUES
+(1, 4, 1, '2026-03-04 16:06:56', 1, 5.99, 'ABC123', 0.00, 'cancelado');
+
+--
 -- Triggers `pedido`
 --
 DELIMITER $$
@@ -457,6 +524,27 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\User', 3, 'token_registro', '396d74d9c2b13957bc0dd36cb477046c2dfdfc3a1e99f000d3db1520f3a4426c', '[\"*\"]', NULL, NULL, '2026-02-28 14:45:18', '2026-02-28 14:45:18'),
+(2, 'App\\Models\\User', 3, 'token_login', '2bd1d2187d3212a8185be762f3fb7088fa2dfabc8102b1634b2f28c7f2104725', '[\"*\"]', NULL, NULL, '2026-02-28 14:45:53', '2026-02-28 14:45:53'),
+(3, 'App\\Models\\User', 3, 'token_login', '4e5cc85d3965f9efcf33e8881d59a40bb8d4a819ef6862fe2dad36a78b864f05', '[\"*\"]', '2026-03-01 11:55:13', NULL, '2026-03-01 11:54:28', '2026-03-01 11:55:13'),
+(4, 'App\\Models\\User', 3, 'token_login', 'ae4238299d5f69d3433168715e9eafffb55122c9ee19916b9db4b925feacc739', '[\"*\"]', '2026-03-01 12:11:33', NULL, '2026-03-01 12:10:30', '2026-03-01 12:11:33'),
+(5, 'App\\Models\\User', 3, 'token_login', '80371cecb5df5c127743b96135e1fa553d082763bfc68e701a1cb9f1405e4b2a', '[\"*\"]', '2026-03-02 19:57:02', NULL, '2026-03-01 12:12:46', '2026-03-02 19:57:02'),
+(6, 'App\\Models\\User', 4, 'token_registro', '35bfbbb2335b7e8439ff3dcfaea9f1e418b9236be4159976f3cb73124e525ab7', '[\"*\"]', NULL, NULL, '2026-03-04 13:26:07', '2026-03-04 13:26:07'),
+(8, 'App\\Models\\User', 4, 'token_login', '76723c5c97575b6b09a4d3b2cf14121335ae2a93eb21fcb65d3c197d3002e050', '[\"*\"]', NULL, NULL, '2026-03-04 13:27:48', '2026-03-04 13:27:48'),
+(9, 'App\\Models\\User', 4, 'token_login', '3ae8b14233e65f2b6d1df7e64343abbcd88dc441790c13da4288dcdb0f1d8049', '[\"*\"]', '2026-03-04 13:29:06', NULL, '2026-03-04 13:28:24', '2026-03-04 13:29:06'),
+(10, 'App\\Models\\User', 3, 'token_login', 'ef8cdf410ac9a439e39b4863bc63ded8f1c8230df561a3bf0e33b53497bea2ba', '[\"*\"]', '2026-03-04 13:36:14', NULL, '2026-03-04 13:29:27', '2026-03-04 13:36:14'),
+(11, 'App\\Models\\User', 3, 'token_login', '10a8dd59081ec51c234b6656168f12e024f52c63c3c3f0dd4f64f9935153f8b1', '[\"*\"]', '2026-03-05 11:28:07', NULL, '2026-03-04 13:37:25', '2026-03-05 11:28:07'),
+(12, 'App\\Models\\User', 4, 'token_login', 'c75977a9ab04a755cc21f56c5ed99d9df39fbfdbbe48a9c994e017f893154a24', '[\"*\"]', '2026-03-05 12:18:49', NULL, '2026-03-04 13:45:32', '2026-03-05 12:18:49'),
+(13, 'App\\Models\\User', 5, 'token_registro', '47974a93ffc4c5f2cc33e6ea8209e6c22a7e52770111f07c46105b0462b80512', '[\"*\"]', NULL, NULL, '2026-03-04 13:49:56', '2026-03-04 13:49:56'),
+(14, 'App\\Models\\User', 6, 'token_registro', '07dca2dad498ee85d5edec79be55c3d8f4896aa961c2a50355ef5abfce80b692', '[\"*\"]', NULL, NULL, '2026-03-04 14:23:07', '2026-03-04 14:23:07'),
+(15, 'App\\Models\\User', 7, 'token_registro', '14f89d6545bd018fb95505034e6759f192dd478a1955dbbd09ef185ab5b09336', '[\"*\"]', NULL, NULL, '2026-03-05 12:19:56', '2026-03-05 12:19:56'),
+(16, 'App\\Models\\User', 7, 'token_login', '9b9165d31b83651707c9964eda061e3144cdd85e9eef0cd852a441467b3fb22e', '[\"*\"]', '2026-03-05 12:23:41', NULL, '2026-03-05 12:20:11', '2026-03-05 12:23:41');
+
 -- --------------------------------------------------------
 
 --
@@ -474,6 +562,16 @@ CREATE TABLE `producto` (
   `stock` int DEFAULT '0',
   `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `id_categoria`, `activo`, `eliminado_en`, `precio`, `stock`, `imagen`) VALUES
+(1, 'Camiseta', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg'),
+(2, 'Camiseta', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg'),
+(3, 'Camiseta editada', 'Camiseta de algodón', 1, 1, NULL, 24.99, 50, 'camiseta.jpg'),
+(4, 'Camisetas', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg');
 
 --
 -- Triggers `producto`
@@ -519,6 +617,13 @@ CREATE TABLE `sessions` (
   `last_activity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('gcBJbvICBFJcvc4R46G19mvUvxIaH2GRjpovTxUY', NULL, '127.0.0.1', 'PostmanRuntime/7.51.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoib2pXTk1kalVJM3hDUUxNaVFJWnFCc3lNMGJZRUhHNGZURDlUdW1VViI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1772716807);
+
 -- --------------------------------------------------------
 
 --
@@ -535,6 +640,16 @@ CREATE TABLE `usuario` (
   `fecha_nacimiento` date DEFAULT NULL,
   `fecha_registro` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `contrasena`, `rol`, `telefono`, `fecha_nacimiento`, `fecha_registro`) VALUES
+(3, 'Nacho Editado', 'nacho@gmail.com', '$2y$12$jBEf22KxxgscSbsUhlj7eu7AtudgUsIBVGD07hr3BpLaL4bMHvT6G', 'admin', '611111111', '2005-03-21', '2026-02-28 16:45:18'),
+(4, 'Ivan', 'ivan@gmail.com', '$2y$12$GWF9PUhMxXoJiGBYRomr7ucZDdztKuPCbgaIVcGh3bHeqjXTya2Ay', 'cliente', '123456789', '2005-09-11', '2026-03-04 15:26:07'),
+(6, 'Nadia', 'nadia@gmail.com', '$2y$12$6EZVzswDZQcIdXIAnO9QGu7/3oLq1HEnMQdLS/aQGf4i684eYFfmW', 'cliente', '600000000', '2000-01-01', '2026-03-04 16:23:07'),
+(7, 'Juan', 'juan@gmail.com', '$2y$12$8fGy11CAo.VdGNeYxju5GuOnb6/uT3jgKl1p4SuRksVzfgNKAWYbm', 'cliente', '611111111', '1995-05-05', '2026-03-05 14:19:56');
 
 --
 -- Indexes for dumped tables
@@ -586,7 +701,7 @@ ALTER TABLE `categoria`
 -- Indexes for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
-  ADD PRIMARY KEY (`id_detalle`),
+  ADD PRIMARY KEY (`id_detalle_carrito`),
   ADD KEY `id_carrito` (`id_carrito`),
   ADD KEY `id_producto` (`id_producto`);
 
@@ -707,43 +822,43 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `auditoria`
 --
 ALTER TABLE `auditoria`
-  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `avatar_3d`
 --
 ALTER TABLE `avatar_3d`
-  MODIFY `id_avatar` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_avatar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
-  MODIFY `id_detalle` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-  MODIFY `id_detalle_pedido` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `id_direccion` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_direccion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -755,7 +870,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `historial_estado_pedido`
 --
 ALTER TABLE `historial_estado_pedido`
-  MODIFY `id_historial` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historial` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -767,7 +882,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `metodo_pago`
 --
 ALTER TABLE `metodo_pago`
-  MODIFY `id_metodo_pago` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_metodo_pago` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -779,25 +894,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
