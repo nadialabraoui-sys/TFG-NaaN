@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2026 at 11:53 AM
+-- Generation Time: Apr 01, 2026 at 08:26 AM
 -- Server version: 8.0.45
 -- PHP Version: 8.2.30
 
@@ -57,7 +57,235 @@ INSERT INTO `auditoria` (`id_auditoria`, `tabla_afectada`, `id_registro`, `opera
 (13, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pagado\"}', '{\"total\": 0.00, \"estado\": \"enviado\"}', '2026-03-04 16:07:35'),
 (14, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"enviado\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-04 16:07:47'),
 (15, 'Pedido', 1, 'UPDATE', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '{\"total\": 39.98, \"estado\": \"cancelado\"}', '2026-03-04 16:38:18'),
-(16, 'Pedido', 1, 'UPDATE', '{\"total\": 39.98, \"estado\": \"cancelado\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-04 16:38:45');
+(16, 'Pedido', 1, 'UPDATE', '{\"total\": 39.98, \"estado\": \"cancelado\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-04 16:38:45'),
+(17, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 11:47:41'),
+(18, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:33'),
+(19, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:35'),
+(20, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:36'),
+(21, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:37'),
+(22, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:38'),
+(23, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:38'),
+(24, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:39'),
+(25, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:40'),
+(26, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:41'),
+(27, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:41'),
+(28, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:43'),
+(29, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:02:49'),
+(30, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:02:50'),
+(31, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:04:54'),
+(32, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:04:55'),
+(33, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:04:57'),
+(34, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:04:57'),
+(35, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:04:58'),
+(36, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:04:59'),
+(37, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:05:00'),
+(38, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:05:01'),
+(39, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:05:02'),
+(40, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:05:02'),
+(41, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:10:38'),
+(42, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:13:05'),
+(43, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:13:06'),
+(44, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:13:08'),
+(45, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:13:09'),
+(46, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:13:09'),
+(47, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:13:10'),
+(48, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:13:11'),
+(49, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:13:11'),
+(50, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:13:16'),
+(51, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:13:28'),
+(52, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:14:25'),
+(53, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:20:06'),
+(54, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:20:07'),
+(55, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:20:08'),
+(56, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:20:08'),
+(57, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:20:09'),
+(58, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:20:10'),
+(59, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:21:37'),
+(60, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:21:38'),
+(61, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:21:38'),
+(62, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:00'),
+(63, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:03'),
+(64, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:24:05'),
+(65, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:24:07'),
+(66, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:11'),
+(67, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:18'),
+(68, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:24:22'),
+(69, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:41'),
+(70, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:24:46'),
+(71, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:48'),
+(72, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:24:50'),
+(73, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:24:54'),
+(74, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:24:55'),
+(75, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:24:56'),
+(76, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:24:57'),
+(77, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:26:51'),
+(78, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:26:53'),
+(79, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:26:55'),
+(80, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:26:56'),
+(81, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:26:59'),
+(82, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:27:03'),
+(83, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:27:04'),
+(84, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:28:09'),
+(85, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:31:36'),
+(86, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:31:40'),
+(87, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:31:42'),
+(88, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:31:42'),
+(89, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:31:43'),
+(90, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:31:44'),
+(91, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:31:53'),
+(92, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:31:54'),
+(93, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:31:55'),
+(94, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:31:56'),
+(95, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:32:00'),
+(96, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:34:41'),
+(97, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:34:46'),
+(98, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:35:24'),
+(99, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:36:05'),
+(100, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:36:07'),
+(101, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:36:13'),
+(102, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:36:15'),
+(103, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:36:16'),
+(104, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:36:17'),
+(105, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:36:18'),
+(106, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:38:56'),
+(107, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:38:59'),
+(108, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:39:00'),
+(109, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:39:01'),
+(110, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:39:06'),
+(111, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:39:08'),
+(112, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:39:09'),
+(113, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:39:10'),
+(114, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:40:12'),
+(115, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:40:13'),
+(116, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:40:14'),
+(117, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:40:15'),
+(118, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:40:27'),
+(119, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:40:28'),
+(120, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:40:29'),
+(121, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:40:29'),
+(122, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:41:31'),
+(123, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:41:32'),
+(124, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:41:33'),
+(125, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:41:39'),
+(126, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:41:40'),
+(127, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:41:42'),
+(128, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:45:02'),
+(129, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:45:03'),
+(130, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:45:04'),
+(131, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:45:06'),
+(132, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:45:07'),
+(133, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:45:08'),
+(134, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:46:43'),
+(135, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:46:45'),
+(136, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:46:47'),
+(137, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:47:30'),
+(138, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:47:32'),
+(139, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:47:33'),
+(140, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:48:45'),
+(141, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:48:50'),
+(142, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-16 12:48:51'),
+(143, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:48:51'),
+(144, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 12:48:53'),
+(145, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:50:26'),
+(146, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:51:04'),
+(147, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-16 12:51:05'),
+(148, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 12:51:06'),
+(149, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 13:16:12'),
+(150, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-16 16:25:03'),
+(151, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 16:25:05'),
+(152, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-16 20:56:19'),
+(153, 'Producto', 4, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:39:18'),
+(154, 'Producto', 1, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:39:34'),
+(155, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:39:54'),
+(156, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:39:56'),
+(157, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:39:57'),
+(158, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:39:58'),
+(159, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:39:59'),
+(160, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:40:39'),
+(161, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:40:40'),
+(162, 'Producto', 1, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:40:43'),
+(163, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:43:01'),
+(164, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:43:02'),
+(165, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:43:07'),
+(166, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:43:34'),
+(167, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:43:59'),
+(168, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:44:15'),
+(169, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:44:17'),
+(170, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:46:46'),
+(171, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:46:50'),
+(172, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:46:51'),
+(173, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:46:52'),
+(174, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:47:00'),
+(175, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:47:05'),
+(176, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:47:14'),
+(177, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:47:17'),
+(178, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:47:20'),
+(179, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:47:25'),
+(180, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:47:38'),
+(181, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:48:18'),
+(182, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-17 10:50:14'),
+(183, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:55:27'),
+(184, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:56:47'),
+(185, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 10:57:24'),
+(186, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 10:59:42'),
+(187, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:01:47'),
+(188, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:01:50'),
+(189, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:01:56'),
+(190, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:01:59'),
+(191, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:02:01'),
+(192, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:02:20'),
+(193, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:02:55'),
+(194, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:02:57'),
+(195, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:02:58'),
+(196, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:05:44'),
+(197, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:05:46'),
+(198, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-17 11:05:48'),
+(199, 'Producto', 4, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:05:53'),
+(200, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-17 11:05:55'),
+(201, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:05:58'),
+(202, 'Producto', 4, 'UPDATE', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:06:02'),
+(203, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:06:25'),
+(204, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '2026-03-17 11:07:10'),
+(205, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:13:34'),
+(206, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:13:42'),
+(207, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:15:38'),
+(208, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:17:13'),
+(209, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:17:50'),
+(210, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:18:04'),
+(211, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:18:09'),
+(212, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:18:14'),
+(213, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:19:52'),
+(214, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:20:53'),
+(215, 'Producto', 3, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 24.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 24.99}', '2026-03-17 11:20:58'),
+(216, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:21:07'),
+(217, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:22:01'),
+(218, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:22:01'),
+(219, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:55:33'),
+(220, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:55:35'),
+(221, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:55:37'),
+(222, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 11:55:42'),
+(223, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:59:42'),
+(224, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 11:59:46'),
+(225, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 12:01:48'),
+(226, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 12:02:26'),
+(227, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 12:02:32'),
+(228, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 12:02:49'),
+(229, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 12:02:54'),
+(230, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 12:04:42'),
+(231, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-17 12:04:55'),
+(232, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-17 12:04:57'),
+(233, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-18 10:59:16'),
+(234, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '2026-03-18 10:59:24'),
+(235, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '2026-03-18 11:02:41'),
+(236, 'Producto', 2, 'UPDATE', '{\"stock\": 50, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 50, \"activo\": 0, \"precio\": 19.99}', '2026-03-18 17:31:43'),
+(237, 'Producto', 1, 'UPDATE', '{\"stock\": 52, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 52, \"activo\": 0, \"precio\": 19.99}', '2026-03-24 12:06:36'),
+(238, 'Producto', 4, 'UPDATE', '{\"stock\": 51, \"activo\": 1, \"precio\": 19.99}', '{\"stock\": 51, \"activo\": 0, \"precio\": 19.99}', '2026-03-24 12:06:48'),
+(239, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Ropa\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo\"}', '2026-03-25 11:21:44'),
+(240, 'Pedido', 2, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"pagado\"}', '2026-03-25 16:20:44'),
+(241, 'Pedido', 2, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pagado\"}', '{\"total\": 0.00, \"estado\": \"enviado\"}', '2026-03-25 16:20:53'),
+(242, 'Pedido', 2, 'UPDATE', '{\"total\": 0.00, \"estado\": \"enviado\"}', '{\"total\": 0.00, \"estado\": \"entregado\"}', '2026-03-25 16:20:58'),
+(243, 'Pedido', 3, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-25 16:28:35'),
+(244, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo editado\"}', '2026-03-25 19:43:06');
 
 -- --------------------------------------------------------
 
@@ -126,8 +354,7 @@ CREATE TABLE `carrito` (
 
 INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `total`) VALUES
 (1, 4, 39.98),
-(4, 6, 0.00),
-(5, 7, 0.00);
+(4, 6, 0.00);
 
 -- --------------------------------------------------------
 
@@ -146,7 +373,7 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
-(1, 'Ropa', 'Ropa de todo tipo'),
+(1, 'Ropa editada', 'Ropa de todo tipo editado'),
 (2, 'Guayabera Editado', 'Ropa presidencial de Mexico');
 
 --
@@ -360,7 +587,11 @@ CREATE TABLE `historial_estado_pedido` (
 INSERT INTO `historial_estado_pedido` (`id_historial`, `id_pedido`, `estado`, `comentario`, `fecha`) VALUES
 (1, 1, 'pagado', NULL, '2026-03-04 16:07:28'),
 (2, 1, 'enviado', NULL, '2026-03-04 16:07:35'),
-(3, 1, 'cancelado', 'Muy mal servicio, paquete llegó tarde', '2026-03-04 16:07:47');
+(3, 1, 'cancelado', 'Muy mal servicio, paquete llegó tarde', '2026-03-04 16:07:47'),
+(4, 2, 'pagado', NULL, '2026-03-25 16:20:44'),
+(5, 2, 'enviado', NULL, '2026-03-25 16:20:53'),
+(6, 2, 'entregado', NULL, '2026-03-25 16:20:58'),
+(7, 3, 'cancelado', NULL, '2026-03-25 16:28:35');
 
 -- --------------------------------------------------------
 
@@ -477,7 +708,10 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id_pedido`, `id_usuario`, `id_metodo_pago`, `fecha`, `id_direccion`, `gastos_envio`, `codigo_seguimiento`, `total`, `estado`) VALUES
-(1, 4, 1, '2026-03-04 16:06:56', 1, 5.99, 'ABC123', 0.00, 'cancelado');
+(1, 4, 1, '2026-03-04 16:06:56', 1, 5.99, 'ABC123', 0.00, 'cancelado'),
+(2, 3, 1, '2026-03-25 16:20:30', 1, 5.99, 'ABC456', 0.00, 'entregado'),
+(3, 3, 1, '2026-03-25 16:21:11', 1, 5.99, 'ABC456', 0.00, 'cancelado'),
+(4, 3, 1, '2026-03-25 16:28:40', 1, 5.99, 'ABC456', 0.00, 'pendiente');
 
 --
 -- Triggers `pedido`
@@ -543,7 +777,8 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (13, 'App\\Models\\User', 5, 'token_registro', '47974a93ffc4c5f2cc33e6ea8209e6c22a7e52770111f07c46105b0462b80512', '[\"*\"]', NULL, NULL, '2026-03-04 13:49:56', '2026-03-04 13:49:56'),
 (14, 'App\\Models\\User', 6, 'token_registro', '07dca2dad498ee85d5edec79be55c3d8f4896aa961c2a50355ef5abfce80b692', '[\"*\"]', NULL, NULL, '2026-03-04 14:23:07', '2026-03-04 14:23:07'),
 (15, 'App\\Models\\User', 7, 'token_registro', '14f89d6545bd018fb95505034e6759f192dd478a1955dbbd09ef185ab5b09336', '[\"*\"]', NULL, NULL, '2026-03-05 12:19:56', '2026-03-05 12:19:56'),
-(16, 'App\\Models\\User', 7, 'token_login', '9b9165d31b83651707c9964eda061e3144cdd85e9eef0cd852a441467b3fb22e', '[\"*\"]', '2026-03-05 12:23:41', NULL, '2026-03-05 12:20:11', '2026-03-05 12:23:41');
+(16, 'App\\Models\\User', 7, 'token_login', '9b9165d31b83651707c9964eda061e3144cdd85e9eef0cd852a441467b3fb22e', '[\"*\"]', '2026-03-05 12:23:41', NULL, '2026-03-05 12:20:11', '2026-03-05 12:23:41'),
+(17, 'App\\Models\\User', 3, 'token_login', 'f0203e94f9d5f1c32e64736dbcc0a32e6abb116c467151e92d1a8cea9aaa4a24', '[\"*\"]', '2026-03-25 17:52:29', NULL, '2026-03-11 10:52:11', '2026-03-25 17:52:29');
 
 -- --------------------------------------------------------
 
@@ -556,6 +791,9 @@ CREATE TABLE `producto` (
   `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `id_categoria` int DEFAULT NULL,
+  `color` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sexo` enum('hombre','mujer','unisex') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `talla` enum('XS','S','M','L','XL','XXL') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `activo` tinyint(1) DEFAULT '1',
   `eliminado_en` datetime DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -567,11 +805,13 @@ CREATE TABLE `producto` (
 -- Dumping data for table `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `id_categoria`, `activo`, `eliminado_en`, `precio`, `stock`, `imagen`) VALUES
-(1, 'Camiseta', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg'),
-(2, 'Camiseta', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg'),
-(3, 'Camiseta editada', 'Camiseta de algodón', 1, 1, NULL, 24.99, 50, 'camiseta.jpg'),
-(4, 'Camisetas', 'Camiseta de algodón', 1, 1, NULL, 19.99, 50, 'camiseta.jpg');
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `id_categoria`, `color`, `sexo`, `talla`, `activo`, `eliminado_en`, `precio`, `stock`, `imagen`) VALUES
+(1, 'Camisetas', 'Camiseta de algodón chula', 1, NULL, NULL, NULL, 0, '2026-03-24 12:06:36', 19.99, 52, 'camiseta.jpg'),
+(2, 'Camiseta', 'Camiseta de algodón chula', 1, NULL, NULL, NULL, 0, '2026-03-18 17:31:43', 19.99, 50, 'camiseta.jpg'),
+(3, 'Camisetas', 'Camiseta de algodón', 1, NULL, NULL, NULL, 0, '2026-03-17 11:20:58', 24.99, 50, 'camiseta.jpg'),
+(4, 'Camisetas', 'Camiseta de algodón', 1, NULL, NULL, NULL, 0, '2026-03-24 12:06:48', 19.99, 51, 'camiseta.jpg'),
+(5, 'pantalon', 'pantalon corto', 2, NULL, NULL, NULL, 1, NULL, 12.00, 12, 'hola.jpg'),
+(6, 'Doraemon', 'Gato cosmico', 2, NULL, NULL, NULL, 1, NULL, 10000.00, 1, 'doraemon.png');
 
 --
 -- Triggers `producto`
@@ -622,7 +862,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('gcBJbvICBFJcvc4R46G19mvUvxIaH2GRjpovTxUY', NULL, '127.0.0.1', 'PostmanRuntime/7.51.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoib2pXTk1kalVJM3hDUUxNaVFJWnFCc3lNMGJZRUhHNGZURDlUdW1VViI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1772716807);
+('fXSRBOcHjiaXfJleOI4EsItZuDWXcQQgJgWnTCmW', NULL, '127.0.0.1', 'PostmanRuntime/7.51.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWXFiVDh1QTRucjJpSkxkRmplU21mNXFRRDFESk1QRTJRQk9IOVdCOSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1773229880);
 
 -- --------------------------------------------------------
 
@@ -648,8 +888,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `contrasena`, `rol`, `telefono`, `fecha_nacimiento`, `fecha_registro`) VALUES
 (3, 'Nacho Editado', 'nacho@gmail.com', '$2y$12$jBEf22KxxgscSbsUhlj7eu7AtudgUsIBVGD07hr3BpLaL4bMHvT6G', 'admin', '611111111', '2005-03-21', '2026-02-28 16:45:18'),
 (4, 'Ivan', 'ivan@gmail.com', '$2y$12$GWF9PUhMxXoJiGBYRomr7ucZDdztKuPCbgaIVcGh3bHeqjXTya2Ay', 'cliente', '123456789', '2005-09-11', '2026-03-04 15:26:07'),
-(6, 'Nadia', 'nadia@gmail.com', '$2y$12$6EZVzswDZQcIdXIAnO9QGu7/3oLq1HEnMQdLS/aQGf4i684eYFfmW', 'cliente', '600000000', '2000-01-01', '2026-03-04 16:23:07'),
-(7, 'Juan', 'juan@gmail.com', '$2y$12$8fGy11CAo.VdGNeYxju5GuOnb6/uT3jgKl1p4SuRksVzfgNKAWYbm', 'cliente', '611111111', '1995-05-05', '2026-03-05 14:19:56');
+(6, 'Nadia', 'nadia@gmail.com', '$2y$12$6EZVzswDZQcIdXIAnO9QGu7/3oLq1HEnMQdLS/aQGf4i684eYFfmW', 'cliente', '600000000', '2000-01-01', '2026-03-04 16:23:07');
 
 --
 -- Indexes for dumped tables
@@ -822,7 +1061,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `auditoria`
 --
 ALTER TABLE `auditoria`
-  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT for table `avatar_3d`
@@ -840,7 +1079,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detalle_carrito`
@@ -870,7 +1109,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `historial_estado_pedido`
 --
 ALTER TABLE `historial_estado_pedido`
-  MODIFY `id_historial` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_historial` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -894,19 +1133,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `usuario`
