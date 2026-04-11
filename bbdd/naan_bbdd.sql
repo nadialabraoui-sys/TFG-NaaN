@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2026 at 08:26 AM
+-- Generation Time: Apr 11, 2026 at 12:18 PM
 -- Server version: 8.0.45
 -- PHP Version: 8.2.30
 
@@ -285,7 +285,18 @@ INSERT INTO `auditoria` (`id_auditoria`, `tabla_afectada`, `id_registro`, `opera
 (241, 'Pedido', 2, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pagado\"}', '{\"total\": 0.00, \"estado\": \"enviado\"}', '2026-03-25 16:20:53'),
 (242, 'Pedido', 2, 'UPDATE', '{\"total\": 0.00, \"estado\": \"enviado\"}', '{\"total\": 0.00, \"estado\": \"entregado\"}', '2026-03-25 16:20:58'),
 (243, 'Pedido', 3, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"cancelado\"}', '2026-03-25 16:28:35'),
-(244, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo editado\"}', '2026-03-25 19:43:06');
+(244, 'Categoria', 1, 'UPDATE', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo\"}', '{\"nombre\": \"Ropa editada\", \"descripcion\": \"Ropa de todo tipo editado\"}', '2026-03-25 19:43:06'),
+(245, 'Pedido', 4, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '2026-04-08 21:24:14'),
+(246, 'Pedido', 4, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '2026-04-08 21:31:13'),
+(247, 'Pedido', 4, 'UPDATE', '{\"total\": 0.00, \"estado\": \"pendiente\"}', '{\"total\": 24.00, \"estado\": \"pendiente\"}', '2026-04-08 21:34:55'),
+(248, 'Pedido', 4, 'UPDATE', '{\"total\": 24.00, \"estado\": \"pendiente\"}', '{\"total\": 43.99, \"estado\": \"pendiente\"}', '2026-04-08 21:34:55'),
+(249, 'Producto', 6, 'UPDATE', '{\"stock\": 1, \"activo\": 1, \"precio\": 10000.00}', '{\"stock\": 1, \"activo\": 1, \"precio\": 10000.00}', '2026-04-09 18:26:02'),
+(250, 'Producto', 5, 'UPDATE', '{\"stock\": 12, \"activo\": 1, \"precio\": 12.00}', '{\"stock\": 12, \"activo\": 1, \"precio\": 12.00}', '2026-04-09 18:26:09'),
+(251, 'Producto', 7, 'UPDATE', '{\"stock\": 0, \"activo\": 1, \"precio\": 14.00}', '{\"stock\": 0, \"activo\": 1, \"precio\": 14.00}', '2026-04-09 18:26:30'),
+(252, 'Producto', 8, 'UPDATE', '{\"stock\": 11, \"activo\": 1, \"precio\": 12.00}', '{\"stock\": 11, \"activo\": 1, \"precio\": 12.00}', '2026-04-09 18:26:33'),
+(253, 'Producto', 6, 'UPDATE', '{\"stock\": 1, \"activo\": 1, \"precio\": 10000.00}', '{\"stock\": 1, \"activo\": 1, \"precio\": 10000.00}', '2026-04-09 18:26:40'),
+(254, 'Producto', 5, 'UPDATE', '{\"stock\": 12, \"activo\": 1, \"precio\": 12.00}', '{\"stock\": 12, \"activo\": 1, \"precio\": 12.00}', '2026-04-09 18:26:47'),
+(255, 'Producto', 54, 'UPDATE', '{\"stock\": 13, \"activo\": 1, \"precio\": 18.99}', '{\"stock\": 13, \"activo\": 1, \"precio\": 18.99}', '2026-04-09 20:21:44');
 
 -- --------------------------------------------------------
 
@@ -354,7 +365,9 @@ CREATE TABLE `carrito` (
 
 INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `total`) VALUES
 (1, 4, 39.98),
-(4, 6, 0.00);
+(4, 6, 0.00),
+(6, 8, 24.00),
+(7, 9, 0.00);
 
 -- --------------------------------------------------------
 
@@ -374,7 +387,10 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
 (1, 'Ropa editada', 'Ropa de todo tipo editado'),
-(2, 'Guayabera Editado', 'Ropa presidencial de Mexico');
+(2, 'Guayabera Editado', 'Ropa presidencial de Mexico'),
+(5, 'Camisetas', NULL),
+(6, 'Pantalones', NULL),
+(7, 'Ropa mujer', NULL);
 
 --
 -- Triggers `categoria`
@@ -410,6 +426,7 @@ CREATE TABLE `detalle_carrito` (
   `id_carrito` int NOT NULL,
   `id_producto` int NOT NULL,
   `cantidad` int NOT NULL,
+  `talla` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -417,8 +434,9 @@ CREATE TABLE `detalle_carrito` (
 -- Dumping data for table `detalle_carrito`
 --
 
-INSERT INTO `detalle_carrito` (`id_detalle_carrito`, `id_carrito`, `id_producto`, `cantidad`, `precio_unitario`) VALUES
-(2, 1, 1, 2, 19.99);
+INSERT INTO `detalle_carrito` (`id_detalle_carrito`, `id_carrito`, `id_producto`, `cantidad`, `talla`, `precio_unitario`) VALUES
+(2, 1, 1, 2, NULL, 19.99),
+(3, 6, 5, 2, 'M', 12.00);
 
 --
 -- Triggers `detalle_carrito`
@@ -467,6 +485,14 @@ CREATE TABLE `detalle_pedido` (
   `cantidad` int NOT NULL,
   `precio_en_el_momento` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detalle_pedido`
+--
+
+INSERT INTO `detalle_pedido` (`id_detalle_pedido`, `id_pedido`, `id_producto`, `cantidad`, `precio_en_el_momento`) VALUES
+(2, 4, 5, 2, 12.00),
+(3, 4, 1, 1, 19.99);
 
 --
 -- Triggers `detalle_pedido`
@@ -564,7 +590,13 @@ CREATE TABLE `favorito` (
 --
 
 INSERT INTO `favorito` (`id_usuario`, `id_producto`) VALUES
-(4, 2);
+(8, 1),
+(8, 2),
+(8, 3),
+(8, 4),
+(8, 55),
+(8, 60),
+(8, 63);
 
 -- --------------------------------------------------------
 
@@ -649,7 +681,9 @@ CREATE TABLE `metodo_pago` (
 
 INSERT INTO `metodo_pago` (`id_metodo_pago`, `id_usuario`, `tipo`, `numero_enmascarado`, `es_predeterminado`, `fecha_expiracion`) VALUES
 (1, 4, 'paypal', '2', 0, '2036-03-01'),
-(3, 4, 'paypal', '1234', 0, '2027-12-12');
+(3, 4, 'paypal', '1234', 0, '2027-12-12'),
+(6, 8, 'bizum', '+34 111111111', 1, NULL),
+(7, 8, 'paypal', 'ignaciolangarica68@gmail.com', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -671,7 +705,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2026_02_23_130126_create_personal_access_tokens_table', 1);
+(5, '2026_02_23_130126_create_personal_access_tokens_table', 2),
+(7, '2026_04_09_160208_add_talla_to_detalle_carrito', 3);
 
 -- --------------------------------------------------------
 
@@ -711,7 +746,7 @@ INSERT INTO `pedido` (`id_pedido`, `id_usuario`, `id_metodo_pago`, `fecha`, `id_
 (1, 4, 1, '2026-03-04 16:06:56', 1, 5.99, 'ABC123', 0.00, 'cancelado'),
 (2, 3, 1, '2026-03-25 16:20:30', 1, 5.99, 'ABC456', 0.00, 'entregado'),
 (3, 3, 1, '2026-03-25 16:21:11', 1, 5.99, 'ABC456', 0.00, 'cancelado'),
-(4, 3, 1, '2026-03-25 16:28:40', 1, 5.99, 'ABC456', 0.00, 'pendiente');
+(4, 8, 1, '2026-03-25 16:28:40', 1, 5.99, 'ABC456', 43.99, 'pendiente');
 
 --
 -- Triggers `pedido`
@@ -763,22 +798,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 3, 'token_registro', '396d74d9c2b13957bc0dd36cb477046c2dfdfc3a1e99f000d3db1520f3a4426c', '[\"*\"]', NULL, NULL, '2026-02-28 14:45:18', '2026-02-28 14:45:18'),
-(2, 'App\\Models\\User', 3, 'token_login', '2bd1d2187d3212a8185be762f3fb7088fa2dfabc8102b1634b2f28c7f2104725', '[\"*\"]', NULL, NULL, '2026-02-28 14:45:53', '2026-02-28 14:45:53'),
-(3, 'App\\Models\\User', 3, 'token_login', '4e5cc85d3965f9efcf33e8881d59a40bb8d4a819ef6862fe2dad36a78b864f05', '[\"*\"]', '2026-03-01 11:55:13', NULL, '2026-03-01 11:54:28', '2026-03-01 11:55:13'),
-(4, 'App\\Models\\User', 3, 'token_login', 'ae4238299d5f69d3433168715e9eafffb55122c9ee19916b9db4b925feacc739', '[\"*\"]', '2026-03-01 12:11:33', NULL, '2026-03-01 12:10:30', '2026-03-01 12:11:33'),
-(5, 'App\\Models\\User', 3, 'token_login', '80371cecb5df5c127743b96135e1fa553d082763bfc68e701a1cb9f1405e4b2a', '[\"*\"]', '2026-03-02 19:57:02', NULL, '2026-03-01 12:12:46', '2026-03-02 19:57:02'),
-(6, 'App\\Models\\User', 4, 'token_registro', '35bfbbb2335b7e8439ff3dcfaea9f1e418b9236be4159976f3cb73124e525ab7', '[\"*\"]', NULL, NULL, '2026-03-04 13:26:07', '2026-03-04 13:26:07'),
-(8, 'App\\Models\\User', 4, 'token_login', '76723c5c97575b6b09a4d3b2cf14121335ae2a93eb21fcb65d3c197d3002e050', '[\"*\"]', NULL, NULL, '2026-03-04 13:27:48', '2026-03-04 13:27:48'),
-(9, 'App\\Models\\User', 4, 'token_login', '3ae8b14233e65f2b6d1df7e64343abbcd88dc441790c13da4288dcdb0f1d8049', '[\"*\"]', '2026-03-04 13:29:06', NULL, '2026-03-04 13:28:24', '2026-03-04 13:29:06'),
-(10, 'App\\Models\\User', 3, 'token_login', 'ef8cdf410ac9a439e39b4863bc63ded8f1c8230df561a3bf0e33b53497bea2ba', '[\"*\"]', '2026-03-04 13:36:14', NULL, '2026-03-04 13:29:27', '2026-03-04 13:36:14'),
-(11, 'App\\Models\\User', 3, 'token_login', '10a8dd59081ec51c234b6656168f12e024f52c63c3c3f0dd4f64f9935153f8b1', '[\"*\"]', '2026-03-05 11:28:07', NULL, '2026-03-04 13:37:25', '2026-03-05 11:28:07'),
-(12, 'App\\Models\\User', 4, 'token_login', 'c75977a9ab04a755cc21f56c5ed99d9df39fbfdbbe48a9c994e017f893154a24', '[\"*\"]', '2026-03-05 12:18:49', NULL, '2026-03-04 13:45:32', '2026-03-05 12:18:49'),
-(13, 'App\\Models\\User', 5, 'token_registro', '47974a93ffc4c5f2cc33e6ea8209e6c22a7e52770111f07c46105b0462b80512', '[\"*\"]', NULL, NULL, '2026-03-04 13:49:56', '2026-03-04 13:49:56'),
-(14, 'App\\Models\\User', 6, 'token_registro', '07dca2dad498ee85d5edec79be55c3d8f4896aa961c2a50355ef5abfce80b692', '[\"*\"]', NULL, NULL, '2026-03-04 14:23:07', '2026-03-04 14:23:07'),
-(15, 'App\\Models\\User', 7, 'token_registro', '14f89d6545bd018fb95505034e6759f192dd478a1955dbbd09ef185ab5b09336', '[\"*\"]', NULL, NULL, '2026-03-05 12:19:56', '2026-03-05 12:19:56'),
-(16, 'App\\Models\\User', 7, 'token_login', '9b9165d31b83651707c9964eda061e3144cdd85e9eef0cd852a441467b3fb22e', '[\"*\"]', '2026-03-05 12:23:41', NULL, '2026-03-05 12:20:11', '2026-03-05 12:23:41'),
-(17, 'App\\Models\\User', 3, 'token_login', 'f0203e94f9d5f1c32e64736dbcc0a32e6abb116c467151e92d1a8cea9aaa4a24', '[\"*\"]', '2026-03-25 17:52:29', NULL, '2026-03-11 10:52:11', '2026-03-25 17:52:29');
+(1, 'App\\Models\\User', 8, 'token_login', 'c2441ba1397ed7338022538e85744cad091ec6e435c012bebec5d19f3943a7eb', '[\"*\"]', '2026-04-10 15:45:50', NULL, '2026-04-09 09:38:59', '2026-04-10 15:45:50');
 
 -- --------------------------------------------------------
 
@@ -810,8 +830,22 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `id_categoria`, 
 (2, 'Camiseta', 'Camiseta de algodón chula', 1, NULL, NULL, NULL, 0, '2026-03-18 17:31:43', 19.99, 50, 'camiseta.jpg'),
 (3, 'Camisetas', 'Camiseta de algodón', 1, NULL, NULL, NULL, 0, '2026-03-17 11:20:58', 24.99, 50, 'camiseta.jpg'),
 (4, 'Camisetas', 'Camiseta de algodón', 1, NULL, NULL, NULL, 0, '2026-03-24 12:06:48', 19.99, 51, 'camiseta.jpg'),
-(5, 'pantalon', 'pantalon corto', 2, NULL, NULL, NULL, 1, NULL, 12.00, 12, 'hola.jpg'),
-(6, 'Doraemon', 'Gato cosmico', 2, NULL, NULL, NULL, 1, NULL, 10000.00, 1, 'doraemon.png');
+(5, 'pantalon', 'pantalon corto', 2, NULL, 'unisex', NULL, 1, NULL, 12.00, 12, 'hola.jpg'),
+(6, 'Doraemon', 'Gato cosmico', 2, NULL, 'unisex', NULL, 1, NULL, 10000.00, 1, 'doraemon.png'),
+(7, 'prueba1', 'prueba1', 1, 'azul', 'unisex', 'L', 1, NULL, 14.00, 0, '1'),
+(8, 'prueba2', 'prueba2', 1, 'verde', 'unisex', 'S', 1, NULL, 12.00, 11, '1'),
+(9, 'prueba1', 'prueba1', 1, 'azul', 'mujer', 'L', 1, NULL, 14.00, 0, '1'),
+(10, 'prueba2', 'prueba2', 1, 'verde', 'hombre', 'S', 1, NULL, 12.00, 11, '1'),
+(40, 'Camiseta deportiva', 'Ideal para hacer ejercicio', 5, 'azul', 'mujer', 'S', 1, NULL, 18.50, 25, 'camiseta2.jpg'),
+(54, 'Short casual', 'Short cómodo diario', 6, 'verde', 'unisex', 'XXL', 1, NULL, 18.99, 13, 'short3.jpg'),
+(55, 'Camisa cuadros', 'Camisa de cuadros', 1, 'rojo', 'hombre', 'XS', 1, NULL, 24.99, 16, 'camisa2.jpg'),
+(56, 'Vestido verano', 'Vestido ligero verano', 7, 'amarillo', 'mujer', 'S', 1, NULL, 31.99, 11, 'vestido2.jpg'),
+(57, 'Falda larga', 'Falda elegante larga', 7, 'azul', 'mujer', 'M', 1, NULL, 27.50, 12, 'falda2.jpg'),
+(58, 'Abrigo largo', 'Abrigo elegante invierno', 1, 'marron', 'hombre', 'L', 1, NULL, 89.99, 7, 'abrigo2.jpg'),
+(59, 'Chándal pro', 'Chándal profesional', 1, 'negro', 'hombre', 'XL', 1, NULL, 55.00, 15, 'chandal2.jpg'),
+(60, 'Top deportivo', 'Top para ejercicio', 7, 'rosa', 'mujer', 'XXL', 1, NULL, 13.99, 19, 'top2.jpg'),
+(61, 'Polo premium', 'Polo de alta calidad', 5, 'azul', 'hombre', 'XS', 1, NULL, 23.99, 17, 'polo2.jpg'),
+(63, 'Jersey invierno', 'Jersey grueso', 1, 'gris', 'hombre', 'M', 1, NULL, 37.00, 8, 'jersey2.jpg');
 
 --
 -- Triggers `producto`
@@ -888,7 +922,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `contrasena`, `rol`, `telefono`, `fecha_nacimiento`, `fecha_registro`) VALUES
 (3, 'Nacho Editado', 'nacho@gmail.com', '$2y$12$jBEf22KxxgscSbsUhlj7eu7AtudgUsIBVGD07hr3BpLaL4bMHvT6G', 'admin', '611111111', '2005-03-21', '2026-02-28 16:45:18'),
 (4, 'Ivan', 'ivan@gmail.com', '$2y$12$GWF9PUhMxXoJiGBYRomr7ucZDdztKuPCbgaIVcGh3bHeqjXTya2Ay', 'cliente', '123456789', '2005-09-11', '2026-03-04 15:26:07'),
-(6, 'Nadia', 'nadia@gmail.com', '$2y$12$6EZVzswDZQcIdXIAnO9QGu7/3oLq1HEnMQdLS/aQGf4i684eYFfmW', 'cliente', '600000000', '2000-01-01', '2026-03-04 16:23:07');
+(6, 'Nadia', 'nadia@gmail.com', '$2y$12$6EZVzswDZQcIdXIAnO9QGu7/3oLq1HEnMQdLS/aQGf4i684eYFfmW', 'cliente', '600000000', '2000-01-01', '2026-03-04 16:23:07'),
+(8, 'Ignacio Langarica', 'ignaciolangarica68@gmail.com', '$2y$12$JTjBCItAVzlTefmn0v1pCObWtZV.lsl9zBWNpoW9i/RjE4nG9vb/e', 'cliente', '+34 606950429', '2000-11-11', '2026-04-07 03:33:29'),
+(9, 'Ignacio Nacho', 'ignaciolangarica90@gmail.com', '$2y$12$qOb81zycpGoYE.zPEQTypufwe1gdieartfYu8c5GV0aLcpyPhzOtW', 'cliente', NULL, NULL, '2026-04-07 12:21:21');
 
 --
 -- Indexes for dumped tables
@@ -1061,7 +1097,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `auditoria`
 --
 ALTER TABLE `auditoria`
-  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+  MODIFY `id_auditoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `avatar_3d`
@@ -1073,25 +1109,25 @@ ALTER TABLE `avatar_3d`
 -- AUTO_INCREMENT for table `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `detalle_carrito`
 --
 ALTER TABLE `detalle_carrito`
-  MODIFY `id_detalle_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detalle_carrito` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-  MODIFY `id_detalle_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detalle_pedido` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `direccion`
@@ -1121,13 +1157,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `metodo_pago`
 --
 ALTER TABLE `metodo_pago`
-  MODIFY `id_metodo_pago` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_metodo_pago` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pedido`
@@ -1139,19 +1175,19 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_producto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
